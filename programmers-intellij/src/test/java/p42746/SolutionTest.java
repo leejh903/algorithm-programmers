@@ -1,0 +1,15 @@
+package p42746;
+
+import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class SolutionTest {
+
+    @Test
+    public void solution() {
+        int[] numbers = {3, 30, 34, 5, 9};
+        Solution problem = new Solution();
+        String answer = problem.solution(numbers);
+        assertThat(answer).isEqualTo("9534330");
+    }
+}

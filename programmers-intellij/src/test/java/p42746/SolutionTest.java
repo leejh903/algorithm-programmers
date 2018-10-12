@@ -7,9 +7,9 @@ public class SolutionTest {
 
     @Test
     public void solution() {
-        int[] numbers = {3, 30, 34, 5, 9};
+        int[] numbers = {0, 0, 0, 0};
         Solution problem = new Solution();
         String answer = problem.solution(numbers);
-        assertThat(answer).isEqualTo("9534330");
+        assertThat(answer).isEqualTo("0");
     }
 }

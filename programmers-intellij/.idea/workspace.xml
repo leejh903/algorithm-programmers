@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d1fc615-4993-4e93-a7d6-ac7dc6696d45" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/empty.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/emtpy.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/p42746/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/p42746/Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/classes/p42746/SolutionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/p42746/SolutionTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/p42746/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/p42746/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,14 +56,35 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="812346656">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="96" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="96" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open" />
+      <usages-collector id="statistics.vcs.git.usages" />
+      <usages-collector id="statistics.file.extensions.open" />
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+            <state relative-caret-position="180">
+              <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,11 +92,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/p42746/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            <state relative-caret-position="398">
+              <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,7 +112,7 @@
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.8-all/41c9mvq2w0645xx6nsenaerjl/gradle-4.8" />
+        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.8-bin/divx0s2uj4thofgytb7gf9fsi/gradle-4.8" />
       </map>
     </option>
     <option name="myGradleVersions">
@@ -497,6 +519,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/test/java/가장_큰_수/SolutionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/p42746/Solution.java" />
       </list>
     </option>
   </component>
@@ -525,54 +548,70 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers_intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers_intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers_intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers_intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers_intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="p42746" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers_intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="p42746" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539324552228" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539326343402" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
@@ -591,7 +630,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SolutionTest.String_값비교">
+  <component name="RunManager" selected="JUnit.SolutionTest.solution">
     <configuration name="SolutionTest.String_값비교" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="algorithm_test" />
       <extension name="coverage">
@@ -630,8 +669,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SolutionTest.String_값비교" />
         <item itemvalue="JUnit.SolutionTest.solution" />
+        <item itemvalue="JUnit.SolutionTest.String_값비교" />
       </list>
     </recent_temporary>
   </component>
@@ -649,33 +688,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 14h 57m 23s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SolutionTest_String_값비교 - 2018.10.12 at 15h 05m 32s.xml">
-      <configuration name="SolutionTest.String_값비교" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 05m 36s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 05m 40s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SolutionTest_String_값비교 - 2018.10.12 at 15h 06m 31s.xml">
-      <configuration name="SolutionTest.String_값비교" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SolutionTest_String_값비교 - 2018.10.12 at 15h 06m 37s.xml">
-      <configuration name="SolutionTest.String_값비교" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SolutionTest_String_값비교 - 2018.10.12 at 15h 07m 12s.xml">
       <configuration name="SolutionTest.String_값비교" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 11m 03s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 11m 11s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 11m 18s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 29m 39s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 29m 46s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 29m 53s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 31m 02s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 32m 01s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 32m 57s.xml">
+      <configuration name="SolutionTest.solution" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25178826" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -711,8 +759,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state relative-caret-position="180">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -721,8 +769,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/p42746/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="398">
+          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

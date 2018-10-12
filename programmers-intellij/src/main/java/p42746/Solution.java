@@ -30,6 +30,6 @@ public class Solution {
             sb.append(s);
         }
 
-        return sb.toString();
+        return sb.charAt(0) == '0'? "0" : sb.toString();
     }
 }

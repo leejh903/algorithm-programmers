@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d1fc615-4993-4e93-a7d6-ac7dc6696d45" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/p42585/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/p42585/SolutionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/p42746/Solution$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/p42746/Solution$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/p42746/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/p42746/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/classes/p42746/SolutionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/classes/p42746/SolutionTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -56,52 +55,51 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="5" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.0" value="6" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="185" />
+          <entry key="java" value="979" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="185" />
+          <entry key="JAVA" value="979" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="6" />
+          <entry key="CLASS" value="1" />
+          <entry key="JAVA" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="6" />
+          <entry key="class" value="1" />
+          <entry key="java" value="8" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/p42585/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/p42746/Solution.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/p42585/SolutionTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+            <state relative-caret-position="210">
+              <caret line="14" column="59" lean-forward="true" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -110,6 +108,14 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -125,7 +131,7 @@
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.8-bin/divx0s2uj4thofgytb7gf9fsi/gradle-4.8" />
+        <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.8-all/41c9mvq2w0645xx6nsenaerjl/gradle-4.8" />
       </map>
     </option>
     <option name="myGradleVersions">
@@ -533,6 +539,8 @@
         <option value="$PROJECT_DIR$/src/test/java/가장_큰_수/SolutionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/p42746/Solution.java" />
         <option value="$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/p42585/Solution.java" />
+        <option value="$PROJECT_DIR$/src/test/java/p42585/SolutionTest.java" />
       </list>
     </option>
   </component>
@@ -543,8 +551,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="1440" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -567,75 +576,74 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="462c0819:PsiDirectoryNode" />
+              <item name="gradle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
+              <item name="programmers-intellij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="p42746" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
               <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="programmers-intellij" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="programmers-intellij" type="b2602c69:ProjectViewProjectNode" />
-              <item name="programmers-intellij" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="p42746" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539343042697" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539610284367" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="p42585" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -649,7 +657,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SolutionTest.solution">
+  <component name="RunManager" selected="JUnit.SolutionTest.solution (1)">
     <configuration name="SolutionTest.String_값비교" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="algorithm_test" />
       <extension name="coverage">
@@ -661,6 +669,22 @@
       <option name="PACKAGE_NAME" value="p42746" />
       <option name="MAIN_CLASS_NAME" value="p42746.SolutionTest" />
       <option name="METHOD_NAME" value="String_값비교" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SolutionTest.solution (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="algorithm_test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="p42585.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="p42585" />
+      <option name="MAIN_CLASS_NAME" value="p42585.SolutionTest" />
+      <option name="METHOD_NAME" value="solution" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -685,9 +709,11 @@
     <list>
       <item itemvalue="JUnit.SolutionTest.solution" />
       <item itemvalue="JUnit.SolutionTest.String_값비교" />
+      <item itemvalue="JUnit.SolutionTest.solution (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SolutionTest.solution (1)" />
         <item itemvalue="JUnit.SolutionTest.solution" />
         <item itemvalue="JUnit.SolutionTest.String_값비교" />
       </list>
@@ -707,42 +733,42 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 29m 53s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 44m 29s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 31m 02s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 44m 43s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 32m 01s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 44m 48s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 32m 57s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 45m 26s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 45m 50s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 53m 08s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 15h 45m 56s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 53m 12s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 20h 02m 45s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 56m 31s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 20h 03m 50s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 58m 30s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 20h 04m 38s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 58m 32s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SolutionTest_solution - 2018.10.12 at 20h 07m 29s.xml">
-      <configuration name="SolutionTest.solution" configurationId="JUnit" />
+    <history-entry file="SolutionTest_solution_(1) - 2018.10.15 at 21h 58m 41s.xml">
+      <configuration name="SolutionTest.solution (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="1440" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26967096" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20340788" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -751,7 +777,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32871288" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -760,7 +786,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.3120482" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32891566" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32871288" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -787,10 +813,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="1462" column="4" selection-start-line="1462" selection-start-column="4" selection-end-line="1464" selection-end-column="5" />
-          <folding>
-            <element signature="e#56810#56811#0" expanded="true" />
-            <element signature="e#56866#56867#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -798,18 +820,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
           <caret line="201" column="59" selection-start-line="201" selection-start-column="47" selection-end-line="201" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java">
+    <entry file="file://$PROJECT_DIR$/out/test/classes/p42746/SolutionTest.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+        <state relative-caret-position="105">
+          <caret line="8" column="22" lean-forward="true" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#496#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -821,6 +840,33 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/p42746/SolutionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/p42585/SolutionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="59" lean-forward="true" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/p42585/Solution.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
         </state>
       </provider>
     </entry>

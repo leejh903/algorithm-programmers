@@ -10,7 +10,7 @@ public class t20181019 {
     }
 
     void permutation(int[] arr, int d, int n, int r) {
-        if (d == n) {
+        if (r == 0) {
             System.out.println(Arrays.toString(Arrays.copyOfRange(arr, 0, d)));
             return;
         }

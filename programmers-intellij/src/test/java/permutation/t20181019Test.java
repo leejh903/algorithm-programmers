@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class t20181019Test {
     t20181019 test = new t20181019();
-    int[] arr = {1,2,3};
+    int[] arr = {1, 2, 3, 4, 5, 6};
 
     @Test
     public void test() {
@@ -16,6 +16,6 @@ public class t20181019Test {
 
     @Test
     public void test2() {
-        test.permutation(arr, 0, 3, 3);
+        test.permutation(arr, 0, 4, 3);
     }
 }

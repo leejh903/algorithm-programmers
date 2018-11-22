@@ -95,6 +95,12 @@ public class SolutionTest {
         String[][] tickets = {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"}, {"ATL", "SFO"}};
         problem.solution(tickets);
     }
+
+    @Test
+    public void test4() {
+        String[][] tickets = {{"ICN", "BBB"}, {"ICN", "BBC"}, {"BBB", "CCC"}, {"CCC", "ICN"}, {"ICN", "DDD"}, {"DDD", "EEE"}, {"EEE", "ICN"}};
+        problem.solution(tickets);
+    }
 }
 
 class Ticket implements Comparable<Ticket> {

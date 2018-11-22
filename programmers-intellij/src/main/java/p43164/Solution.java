@@ -4,7 +4,6 @@ import java.util.*;
 
 class Solution {
     boolean flag = false;
-
     public String[] solution(String[][] tickets) {
         Map<String, List<Ticket>> map = init(tickets);
         Stack<String> answer = new Stack<>();
@@ -14,22 +13,23 @@ class Solution {
         for (int i = answer.size() - 1; i >= 0; i--) {
             submit[i] = answer.pop();
         }
+        System.out.println(Arrays.asList(submit));
         return submit;
     }
 
     void dfs(Map<String, List<Ticket>> map, Stack<String> answer, String departure, int pass, int target) {
-        for (Ticket ticket : map.get(departure)) {
-            if(flag) ticket.used = true;
-            if (ticket.used == false) {
-                if (pass == target - 1) {
+        if (map.containsKey(departure)) {
+            for (Ticket ticket : map.get(departure)) {
+                if (!flag && ticket.used == false) {
+                    if (pass == target - 1) {
+                        answer.push(ticket.arrival);
+                        flag = true;
+                        return;
+                    }
+                    ticket.used = true;
                     answer.push(ticket.arrival);
-                    flag = true;
-                    return;
-                }
-                ticket.used = true;
-                answer.push(ticket.arrival);
-                dfs(map, answer, ticket.arrival, pass + 1, target);
-                if (!flag) {
+                    dfs(map, answer, ticket.arrival, pass + 1, target);
+                    if (flag) return;
                     ticket.used = false;
                     answer.pop();
                 }
@@ -49,7 +49,7 @@ class Solution {
             map.put(ticket[0], tempList);
         }
         for (String s : map.keySet()) {
-            Collections.sort(map.get(s));  // 정렬
+            Collections.sort(map.get(s));
         }
         return map;
     }

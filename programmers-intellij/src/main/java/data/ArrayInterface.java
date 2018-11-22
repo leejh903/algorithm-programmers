@@ -1,10 +1,12 @@
 package data;
 
-public interface ArrayInterface {
+public interface ArrayInterface<E> {
 
-    void set(int index, int value);
+    void init();
 
-    int get(int index);
+    void set(int index, E value);
+
+    E get(int index);
 
     int size();
 }

@@ -65,4 +65,32 @@ public class ArrayTest {
         }
         System.out.println("------------------");
     }
+
+    @Test
+    public void test5() {
+        Array<Integer> array = new Array<>();
+        array.init();
+        array.set(3, 1);
+        array.set(4, 2);
+        array.set(5, 3);
+        array.remove(4);
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(array.get(i));
+        }
+    }
+
+    @Test
+    public void test6() {
+        Array<Integer> array = new Array<>();
+        array.init();
+        array.set(0, "aa");
+        array.set(4, "cc");
+        array.set(5, "dd");
+        array.set(6, "ee");
+        array.set(8, "zz");
+        array.remove(5);
+        for (int i = 0; i < array.size(); i++) {
+            System.out.println(array.get(i));
+        }
+    }
 }

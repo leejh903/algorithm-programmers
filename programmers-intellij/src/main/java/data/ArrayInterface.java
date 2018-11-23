@@ -8,5 +8,7 @@ public interface ArrayInterface<E> {
 
     E get(int index);
 
+    void remove(int index);
+
     int size();
 }

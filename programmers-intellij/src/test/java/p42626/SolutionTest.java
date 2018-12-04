@@ -2,16 +2,28 @@ package p42626;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SolutionTest {
+    int[] scoville = {12, 2, 9, 3, 10, 1};
     Solution problem = new Solution();
+
+    @Test
+    public void PriorityQueue_테스트() {
+        Queue<Integer> queue = new PriorityQueue();
+        for (int i : scoville) {
+            queue.offer(i);
+        }
+
+        int size = queue.size();
+        for (int i = 0; i < size; i++) {
+            System.out.print(queue.poll() + " ");
+        }
+    }
 
     @Test
     public void test1() {

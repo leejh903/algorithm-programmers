@@ -1,5 +1,8 @@
 package p42860;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Solution {
     public static final char A = 'A';
     public String target;
@@ -14,7 +17,31 @@ class Solution {
         }
         this.target = target.toString();
 
-        dfs(changingText, 0, 0);
+        Queue<Job> queue = new LinkedList<>();
+        queue.offer(new Job(new StringBuilder(name), 1, 0, 0));
+        while(!queue.isEmpty()) {
+            Job job = queue.poll();
+            while(!isSame(job.text)) {
+                char data = job.text.charAt(job.curIndex);
+                if(data != A) {
+                    job.count += Math.min(data - A, 'Z' - data + 1);
+                    job.text.setCharAt(job.curIndex, A);
+                }
+
+                if(job.curIndex <= (job.text.length() - 1) / 2 - 1 && job.direction != -1) {
+                    int temp = job.curIndex;
+                    if(temp == 0) temp = job.text.length() - 1;
+                    queue.add(new Job(new StringBuilder(job.text), -1, temp, job.count + 1));
+                }
+
+                if(!isSame(job.text)) {
+                    job.count++;
+                    if(job.curIndex == 0 && job.direction == -1) job.curIndex = job.text.length();
+                    job.curIndex += job.direction;
+                }
+            }
+            answer = Math.min(answer, job.count);
+        }
 
         if (answer == Integer.MAX_VALUE) return 0;
 
@@ -22,28 +49,31 @@ class Solution {
 
     }
 
-    public void dfs(StringBuilder changingText, int count, int curIndex) {
-        if (isSame(changingText)) {
-            answer = Math.min(answer, count);
-            return;
-        }
+    private boolean isSame(StringBuilder text) {
+        return text.toString().equals(target);
+    }
+}
 
-        char data = changingText.charAt(curIndex);
-        if (data != A) {
-            count += minChangeCount(data);
-            changingText.setCharAt(curIndex, A);
-        }
+class Job {
+    StringBuilder text;
+    int direction;
+    int curIndex;
+    int count;
 
-        if (!isSame(changingText)) {
-            dfs(changingText, ++count, ++curIndex);
-        }
+    public Job(StringBuilder text, int direction, int curIndex, int count) {
+        this.text = text;
+        this.direction = direction;
+        this.curIndex = curIndex;
+        this.count = count;
     }
 
-    private boolean isSame(StringBuilder changingText) {
-        return changingText.toString().equals(target);
-    }
-
-    public int minChangeCount(char data) {
-        return Math.min(data - A, 'Z' - data + 1);
+    @Override
+    public String toString() {
+        return "Job{" +
+                "text=" + text +
+                ", direction=" + direction +
+                ", curIndex=" + curIndex +
+                ", count=" + count +
+                '}';
     }
 }

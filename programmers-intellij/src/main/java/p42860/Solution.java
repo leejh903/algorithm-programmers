@@ -8,7 +8,6 @@ class Solution {
 
     public int solution(String name) {
         int answer = Integer.MAX_VALUE;
-        StringBuilder changingText = new StringBuilder(name);
         StringBuilder targetText = new StringBuilder();
         for (int i = 0; i < name.length(); i++) {
             targetText.append(A);
@@ -28,27 +27,27 @@ class Solution {
                     job.text.setCharAt(job.curIndex, A);
                 }
 
-                if (job.curIndex <= (job.text.length() - 1) / 2 - 1 && job.direction != -1) {
-                    int temp = (job.curIndex == 0 ? job.text.length() - 1 : job.curIndex);
+                if (job.curIndex <= (job.text.length() - 1) / 2 - 1 && job.direction != -1) {  // 뒤로 가도 되는 시점들
+                    int temp = (job.curIndex == 0 ? job.text.length() - 1 : job.curIndex);  // index가 0보다 작을 때 처리
                     queue.add(new Job(new StringBuilder(job.text), -1, temp, job.count + 1));
                 }
 
                 if (!isSame(job.text, target)) {
                     job.count++;
-                    if (job.curIndex == 0 && job.direction == -1) job.curIndex = job.text.length();
+                    if (job.curIndex == 0 && job.direction == -1) job.curIndex = job.text.length();  // index가 0보다 작을 때 처리
                     job.curIndex += job.direction;
                 }
             }
             answer = Math.min(answer, job.count);
         }
 
-        if (answer == Integer.MAX_VALUE) return 0;
+        if (answer == Integer.MAX_VALUE) return 0;  // 이동거리가 없으면 0을 리턴
 
         return answer;
 
     }
 
-    private int minChangeCount(char data) {
+    private int minChangeCount(char data) {  // 최소 거리
         return Math.min(data - A, 'Z' - data + 1);
     }
 

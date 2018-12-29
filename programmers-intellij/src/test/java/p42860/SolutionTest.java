@@ -62,13 +62,25 @@ public class SolutionTest {
 
     @Test
     public void test4() {
-        String name = "JAAAZ";
-        assertThat(problem.solution(name)).isEqualTo(11);
+        String name = "BBAAAAAAAAAAAAAAAAAAAAAAAAAAZ";
+        assertThat(problem.solution(name)).isEqualTo(6);
     }
 
     @Test
     public void test5() {
         String name = "JAAZA";
         assertThat(problem.solution(name)).isEqualTo(12);
+    }
+
+    @Test
+    public void test6() {
+        String name = "ABBAAAAAAAAAAAAAAAAAAB";
+        System.out.println(problem.solution(name));
+    }
+
+    @Test
+    public void test7() {
+        String name = "ABABABABABABAAAA";
+        System.out.println(problem.solution(name));
     }
 }

@@ -28,7 +28,7 @@ class Solution {
                 }
 
                 if (job.curIndex <= (job.text.length() - 1) / 2 - 1 && job.direction != -1) {  // 뒤로 가도 되는 시점들
-                    int temp = (job.curIndex == 0 ? job.text.length() - 1 : job.curIndex);  // index가 0보다 작을 때 처리
+                    int temp = (job.curIndex == 0 ? job.text.length() - 1 : job.curIndex - 1);  // index가 0보다 작을 때 처리
                     queue.add(new Job(new StringBuilder(job.text), -1, temp, job.count + 1));
                 }
 

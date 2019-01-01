@@ -1,32 +1,30 @@
 package p42885;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 class Solution {
     public int solution(int[] people, int limit) {
-        int answer = 0;
-        Queue<Integer> queue = new PriorityQueue();
+        List<Integer> list = new ArrayList();
         for (int person : people) {
-            queue.offer(person);
+            list.add(person);
         }
+        Collections.sort(list);
 
-        while(!queue.isEmpty()) {
-            int curWeight = 0;
+        int left = 0;
+        int right = list.size() - 1;
+        int count = 0;
 
-            curWeight += queue.poll();
-
-            if(!queue.isEmpty() && queue.peek() + curWeight <= limit) {
-                int max = 0;
-                for (Integer integer : queue) {
-                    if(curWeight + integer <= limit) max = integer;
-                }
-                queue.remove(max);
+        while(left < right) {
+            if(list.get(left) + list.get(right) <= limit) {
+                count++;
+                left++;
+                right--;
+            } else {
+                right--;
             }
-
-            answer++;
         }
-
-        return answer;
+        return people.length - count;
     }
 }

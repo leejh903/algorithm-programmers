@@ -1,23 +1,26 @@
 package p43105;
 
 class Solution {
-    private int maxSum;
-    private int[] firstVal;
-
     public int solution(int[][] triangle) {
-        search(triangle, 0, 0, 0);
-        return maxSum;
-    }
+        int answer = 0;
 
-    public void search(int[][] triangle, int point, int height, int sum) {
-        if (height == triangle.length) {
-            maxSum = Math.max(maxSum, sum);
-            return;
+        for (int i = 1; i < triangle.length; i++) {
+            int eachSize = triangle[i].length;
+            for (int j = 0; j < eachSize; j++) {
+
+                if(j == 0) {
+                    triangle[i][j] += triangle[i - 1][j];
+                } else if(j == eachSize - 1) {
+                    triangle[i][j] += triangle[i - 1][j - 1];
+                } else {
+                    triangle[i][j] += Math.max(triangle[i - 1][j - 1], triangle[i - 1][j]);
+                }
+
+                if(i == triangle.length - 1) answer = Math.max(answer, triangle[i][j]);
+
+            }
         }
 
-        sum += triangle[height][point];
-
-        search(triangle, point, height + 1, sum);
-        search(triangle, point + 1, height + 1, sum);
+        return answer;
     }
 }

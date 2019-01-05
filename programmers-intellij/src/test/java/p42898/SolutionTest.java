@@ -1,6 +1,7 @@
 package p42898;
 
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SolutionTest {
@@ -9,7 +10,7 @@ public class SolutionTest {
     @Test
     public void test() {
         int n = 3, m = 4;
-        int[][] puddles = {{2,2}};
+        int[][] puddles = {{2, 2}};
         boolean[][] visit = new boolean[n][m];
 //        System.out.println(visit[2][2]);
 
@@ -28,7 +29,14 @@ public class SolutionTest {
     @Test
     public void test1() {
         int n = 3, m = 4;
-        int[][] puddles = {{2,2}};
+        int[][] puddles = {{2, 2}};
         assertThat(problem.solution(m, n, puddles)).isEqualTo(4);
+    }
+
+    @Test
+    public void test2() {
+        int n = 3, m = 4;
+        int[][] puddles = {{1, 2},{2,1}};
+        assertThat(problem.solution(m, n, puddles)).isEqualTo(0);
     }
 }

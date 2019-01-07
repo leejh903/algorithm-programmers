@@ -2,6 +2,8 @@ package p42579;
 
 import org.junit.Test;
 
+import java.util.*;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SolutionTest {
@@ -33,5 +35,18 @@ public class SolutionTest {
         String[] genres = {"classic"};
         int[] plays = {400};
         assertThat(problem.solution(genres, plays)).isEqualTo(new int[]{0});
+    }
+
+    @Test
+    public void priorityQueue() {
+        Queue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+        queue.add(3);
+        queue.add(5);
+        queue.add(1);
+        queue.add(9);
+        queue.add(4);
+        for (Integer integer : queue) {
+            System.out.println(integer);
+        }
     }
 }

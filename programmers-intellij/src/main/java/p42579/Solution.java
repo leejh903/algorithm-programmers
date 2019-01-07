@@ -10,8 +10,8 @@ class Solution {
 
         init(queue, genres, plays, map);
 
-        for (Genre genre : queue) {
-            List<Song> songs = genre.getSongs();
+        while(!queue.isEmpty()){
+            List<Song> songs = queue.poll().getSongs();
             Collections.sort(songs);
             int index = 0;
             while(!songs.isEmpty() && index < 2) {
@@ -20,22 +20,15 @@ class Solution {
             }
         }
 
-        return answer.stream().mapToInt(i->i).toArray();
+        return answer.stream().mapToInt(i -> i).toArray();
     }
 
     private void init(Queue<Genre> queue, String[] genres, int[] plays, Map<String, Genre> map) {
         for (int i = 0; i < genres.length; i++) {
             String genre = genres[i];
-            int play = plays[i];
-            Song song = new Song(i, play);
-            if(!map.containsKey(genres[i])) {
-                List<Song> songs = new ArrayList<>();
-                songs.add(song);
-                map.put(genre, new Genre(play, songs));
-                continue;
-            }
-            map.get(genre).addSong(song);
-            map.get(genre).addPlay(play);
+            Genre aGenre = map.getOrDefault(genre, new Genre(0, new ArrayList<>()));
+            aGenre.add(new Song(i, plays[i]));
+            map.put(genre, aGenre);
         }
 
         for (String s : map.keySet()) {
@@ -57,11 +50,8 @@ class Genre implements Comparable<Genre> {
         return songs;
     }
 
-    public void addPlay(int play) {
-        this.sumOfPlay += play;
-    }
-
-    public void addSong(Song song) {
+    public void add(Song song) {
+        this.sumOfPlay += song.getPlay();
         this.songs.add(song);
     }
 
@@ -82,6 +72,10 @@ class Song implements Comparable<Song> {
 
     public int getId() {
         return id;
+    }
+
+    public int getPlay() {
+        return play;
     }
 
     @Override

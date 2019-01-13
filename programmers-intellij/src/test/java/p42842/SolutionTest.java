@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SolutionTest {
+    Solution problem = new Solution();
 
     @Test
     public void red_combination() {
@@ -21,5 +22,23 @@ public class SolutionTest {
             }
            width--;
         }
+    }
+
+    @Test
+    public void test1() {
+        int brown = 10, red = 2;
+        assertThat(problem.solution(brown, red)).isEqualTo(new int[]{4, 3});
+    }
+
+    @Test
+    public void test2() {
+        int brown = 8, red = 1;
+        assertThat(problem.solution(brown, red)).isEqualTo(new int[]{3, 3});
+    }
+
+    @Test
+    public void test3() {
+        int brown = 24, red = 24;
+        assertThat(problem.solution(brown, red)).isEqualTo(new int[]{8, 6});
     }
 }

@@ -2,6 +2,9 @@ package p42861;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,4 +31,5 @@ public class SolutionTest {
         int[][] costs = {{0, 1, 1}, {1, 2, 2}, {1, 4, 3}, {2, 3, 7}, {2, 5, 3}, {3, 5, 1}, {4, 2, 1}};
         assertThat(problem.solution(n, costs)).isEqualTo(8);
     }
+
 }

@@ -19,7 +19,7 @@ public class SolutionTest {
     @Test
     public void test2() {
         int[] weight = {3, 1, 6, 2, 7, 30, 1, 32, 1, 3, 5, 1, 5, 6, 2, 4, 9};
-        assertThat(problem.solution(weight)).isEqualTo(21);
+        assertThat(problem.solution(weight)).isEqualTo(119);
     }
 
 }

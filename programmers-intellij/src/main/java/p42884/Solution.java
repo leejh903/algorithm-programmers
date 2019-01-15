@@ -15,7 +15,7 @@ class Solution {
             int start = route.start;
 
             for (Route route1 : routeList) {
-                if(start <= route1.end) route1.checked = true;
+                if(route1.checked == false && start <= route1.end) route1.checked = true;
             }
             answer++;
         }

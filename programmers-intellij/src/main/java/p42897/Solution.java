@@ -1,31 +1,77 @@
 package p42897;
 
 class Solution {
-    int answer = 0;
     public int solution(int[] money) {
-        boolean[] visit = new boolean[money.length];
-        check(money, visit, 0, 0);
-
-        return answer;
+        int answer1 = lastVisit(money);
+        int answer2 = notLastVisit(money);
+        return Math.max(answer1, answer2);
     }
 
-    private void check(int[] money, boolean[] visit, int sum, int index) {
-        if (index == money.length - 1) {
-            if(visit[0] == false && visit[index - 1] == false) {
-                answer = Math.max(sum + money[index], answer);
-                return;
+    private int notLastVisit(int[] money) {
+        int[][] array = new int[money.length - 1][money.length - 1];
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (i == 0 || j == 0) {
+                    array[i][j] = money[0];
+                    continue;
+                }
+                if (j > i) {
+                    array[i][j] = array[i][j - 1];
+                    continue;
+                }
+                if (j < i) {
+                    array[i][j] = array[i - 1][j];
+                    continue;
+                }
+
+                int before = array[i - 1][j];
+                int temp = 0;
+                if (j == 1) {
+                    temp = money[j] + 0;
+                } else {
+                    temp = money[j] + array[i][j - 2];
+                }
+                if (temp > before) array[i][j] = temp;
+                else array[i][j] = before;
             }
-            answer = Math.max(sum, answer);
-            return;
         }
 
-        // 해당 자리 체크 안함
-        check(money, visit.clone(), sum, index + 1);
+        int length = array.length;
+        return array[length - 1][length - 1];
+    }
 
-        // 해당 자리 체크
-        if (index == 0 || !visit[index - 1]) {
-            visit[index] = true;
-            check(money, visit.clone(), sum + money[index], index + 1);
+    private int lastVisit(int[] money) {
+        int[][] array = new int[money.length - 2][money.length - 2];
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if (i == 0 || j == 0) {
+                    array[i][j] = money[money.length - 1];
+                    continue;
+                }
+                if (j > i) {
+                    array[i][j] = array[i][j - 1];
+                    continue;
+                }
+                if (j < i) {
+                    array[i][j] = array[i - 1][j];
+                    continue;
+                }
+
+                int before = array[i - 1][j];
+                int temp = 0;
+                if (j == 1) {
+                    temp = money[j] + array[i][j - 1];
+                } else {
+                    temp = money[j] + array[i][j - 2];
+                }
+                if (temp > before) array[i][j] = temp;
+                else array[i][j] = before;
+            }
         }
+
+        int length = array.length;
+        return array[length - 1][length - 1];
     }
 }

@@ -16,7 +16,13 @@ public class SolutionTest {
 
     @Test
     public void test2() {
-        int[] money = {7, 2, 3, 15, 1};
-        assertThat(problem.solution(money)).isEqualTo(22);
+        int[] money = {10, 8, 3, 5, 7, 7};
+        assertThat(problem.solution(money)).isEqualTo(20);
+    }
+
+    @Test
+    public void test3() {
+        int[] money = {1, 2, 3, 5, 1};
+        assertThat(problem.solution(money)).isEqualTo(7);
     }
 }

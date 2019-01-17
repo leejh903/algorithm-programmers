@@ -2,76 +2,29 @@ package p42897;
 
 class Solution {
     public int solution(int[] money) {
-        int answer1 = lastVisit(money);
-        int answer2 = notLastVisit(money);
-        return Math.max(answer1, answer2);
-    }
+        int length = money.length;
 
-    private int notLastVisit(int[] money) {
-        int[][] array = new int[money.length - 1][money.length - 1];
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (i == 0 || j == 0) {
-                    array[i][j] = money[0];
-                    continue;
-                }
-                if (j > i) {
-                    array[i][j] = array[i][j - 1];
-                    continue;
-                }
-                if (j < i) {
-                    array[i][j] = array[i - 1][j];
-                    continue;
-                }
-
-                int before = array[i - 1][j];
-                int temp = 0;
-                if (j == 1) {
-                    temp = money[j] + 0;
-                } else {
-                    temp = money[j] + array[i][j - 2];
-                }
-                if (temp > before) array[i][j] = temp;
-                else array[i][j] = before;
-            }
+        if (length == 3) {
+            return Math.max(Math.max(money[0], money[1]), money[2]);
         }
 
-        int length = array.length;
-        return array[length - 1][length - 1];
-    }
+        int[] DP1 = new int[length];
+        int[] DP2 = new int[length];
 
-    private int lastVisit(int[] money) {
-        int[][] array = new int[money.length - 2][money.length - 2];
+        DP1[0] = money[0];  // 제일 앞이 선택된 것
+        DP1[1] = money[0];
 
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (i == 0 || j == 0) {
-                    array[i][j] = money[money.length - 1];
-                    continue;
-                }
-                if (j > i) {
-                    array[i][j] = array[i][j - 1];
-                    continue;
-                }
-                if (j < i) {
-                    array[i][j] = array[i - 1][j];
-                    continue;
-                }
+        DP2[1] = money[1];  // 제일 앞이 선택되지 않은 것
 
-                int before = array[i - 1][j];
-                int temp = 0;
-                if (j == 1) {
-                    temp = money[j] + array[i][j - 1];
-                } else {
-                    temp = money[j] + array[i][j - 2];
-                }
-                if (temp > before) array[i][j] = temp;
-                else array[i][j] = before;
-            }
+        for (int i = 2; i < length; i++) {
+            DP1[i] = Math.max(DP1[i - 1], DP1[i - 2] + money[i]);
+            DP2[i] = Math.max(DP2[i - 1], DP2[i - 2] + money[i]);
         }
 
-        int length = array.length;
-        return array[length - 1][length - 1];
+        for (int i : DP2) {
+            System.out.println(i + " ");
+        }
+
+        return Math.max(DP1[length - 2], DP2[length - 1]);
     }
 }

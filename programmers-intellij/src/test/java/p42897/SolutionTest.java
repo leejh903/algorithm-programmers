@@ -25,4 +25,10 @@ public class SolutionTest {
         int[] money = {1, 2, 3, 5, 1};
         assertThat(problem.solution(money)).isEqualTo(7);
     }
+
+    @Test
+    public void test4() {
+        int[] money = {3, 2, 2};
+        assertThat(problem.solution(money)).isEqualTo(3);
+    }
 }

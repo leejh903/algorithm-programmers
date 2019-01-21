@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SolutionTest {
-    Solution2 problem = new Solution2();
+    Solution3 problem = new Solution3();
 
     @Test
     public void test() {

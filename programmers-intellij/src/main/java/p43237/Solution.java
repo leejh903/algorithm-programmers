@@ -23,8 +23,10 @@ class Solution {
     }
 
     private int chooseBestChoice(int[] budgets, int M, int low, int high) {
-        if(M <= makeNewBudet(budgets, high)) return low;
-        return high;
+        int lowGap = M - makeNewBudet(budgets, low);
+        int highGap = M - makeNewBudet(budgets, high);
+        if(highGap < 0) return low;
+        return Math.abs(lowGap) > Math.abs(highGap) ? high : low;
     }
 
     int makeNewBudet(int[] budgets, int mid) {

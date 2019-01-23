@@ -2,6 +2,10 @@ package p43237;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SolutionTest {
@@ -12,6 +16,13 @@ public class SolutionTest {
         int[] budgets = {120, 110, 140, 150};
         int M = 485;
         assertThat(problem.solution(budgets, M)).isEqualTo(127);
+    }
+
+    @Test
+    public void test5() {
+        int[] budgets = {120, 110, 140, 150};
+        int M = 486;
+        assertThat(problem.solution(budgets, M)).isEqualTo(128);
     }
 
     @Test

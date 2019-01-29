@@ -25,11 +25,4 @@ public class SolutionTest {
         assertThat(problem.solution(n, result)).isEqualTo(7);
     }
 
-    @Test
-    public void init() {
-        int n = 5;
-        int[][] result = {{4, 3}, {4, 2}, {3, 2}, {1, 2}, {2, 5}};
-        Map<Integer, List<Integer>> map = problem.init(result);
-        assertThat(map.get(4).size()).isEqualTo(2);
-    }
 }

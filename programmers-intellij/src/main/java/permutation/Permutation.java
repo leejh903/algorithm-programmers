@@ -2,7 +2,7 @@ package permutation;
 
 import java.util.Arrays;
 
-public class t20181019 {
+public class Permutation {
     void myswap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];

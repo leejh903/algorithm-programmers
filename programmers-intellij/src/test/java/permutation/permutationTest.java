@@ -5,8 +5,8 @@ import org.junit.Test;
 import java.util.Arrays;
 
 
-public class t20181019Test {
-    t20181019 test = new t20181019();
+public class permutationTest {
+    Permutation test = new Permutation();
     int[] arr = {1, 2, 3, 4, 5, 6};
 
     @Test

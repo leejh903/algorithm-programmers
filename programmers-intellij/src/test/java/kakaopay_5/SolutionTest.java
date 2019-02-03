@@ -21,4 +21,11 @@ public class SolutionTest {
         int height = 1;
         assertThat(problem.solution(land, height)).isEqualTo(18);
     }
+
+    @Test
+    public void test3() {
+        int[][] land = {{10, 11, 10, 11, 4}, {2, 21, 20, 10, 4}, {1, 20, 21, 11, 4}, {2, 1, 2, 1, 4}, {4, 4, 4, 4, 4}};
+        int height = 1;
+        assertThat(problem.solution(land, height)).isEqualTo(18);
+    }
 }

@@ -6,54 +6,104 @@ import java.util.List;
 class Solution {
     public int solution(int m, int n, String[] board) {
         int answer = 0;
-        List<List<String>> lists = init(m, n, board);
+        List<List<Point>> lists = init(m, n, board);
 
-        while(true) {
+        while (true) {
             int deleted = 0;
 
-            for (int i = 0; i < n - 1; i++) {
-                List<String> list = lists.get(i);
-                for (int j = 0; j < list.size() - 1; j++) {
-                    if(haveSquare(lists, i, j)){
-                        // 재귀 사용해서 삭제할 수 있도록 함수로 따로 뺄것
+            for (int col = 0; col < n - 1; col++) {
+                List<Point> list = lists.get(col);
+                for (int row = list.size() - 1; row > 0; row--) {
+                    if (haveSquare(lists, col, row) && canDelete(lists, col, row)) {
+                        list.get(row).shouldBeDeleted = true;
+                        list.get(row - 1).shouldBeDeleted = true;
+                        lists.get(col + 1).get(row).shouldBeDeleted = true;
+                        lists.get(col + 1).get(row - 1).shouldBeDeleted = true;
+                    }
+                }
+            }
+
+            for (int col = 0; col < n; col++) {
+                for (int row = lists.get(col).size() - 1; row >= 0; row--) {
+                    Point point = lists.get(col).get(row);
+                    if (point.shouldBeDeleted) {
+                        lists.get(col).remove(point);
+                        deleted++;
                     }
                 }
             }
 
             answer += deleted;
-            if(deleted == 0) break;
+            if (deleted == 0) break;
         }
 
         return answer;
     }
 
-    private boolean haveSquare(List<List<String>> lists, int i, int j) {
-        return lists.get(i).size() >= j && lists.get(i + 1).size() >= j;
+    private void printList(List<List<Point>> lists) {
+        for (List<Point> list : lists) {
+            for (Point point : list) {
+                System.out.print(point);
+            }
+            System.out.println();
+        }
     }
 
-    public List<List<String>> init(int m, int n, String[] board) {
-        List<List<String>> lists = new ArrayList<>();
+    boolean canDelete(List<List<Point>> lists, int col, int row) {
+        String s1 = lists.get(col).get(row).value;
+        String s2 = lists.get(col).get(row - 1).value;
+        String s3 = lists.get(col + 1).get(row).value;
+        String s4 = lists.get(col + 1).get(row - 1).value;
+        return s1.equals(s2) && s2.equals(s3) && s3.equals(s4);
+    }
+
+    private boolean haveSquare(List<List<Point>> lists, int col, int row) {
+        return lists.get(col + 1).size() - 1 >= row;
+    }
+
+    public List<List<Point>> init(int m, int n, String[] board) {
+        List<List<Point>> lists = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            List<String> list = new ArrayList<>();
+            List<Point> list = new ArrayList<>();
             lists.add(list);
         }
 
-        for (int i = 0; i < m; i++) {
+        for (int i = m - 1; i >= 0; i--) {
             String[] splitted = board[i].split("");
             for (int j = 0; j < n; j++) {
-                lists.get(j).add(splitted[j]);
+                lists.get(j).add(new Point(i, j, splitted[j]));
             }
         }
 
         return lists;
     }
+}
 
-    private void printList(List<List<String>> lists) {
-        for (List<String> list : lists) {
-            for (String s : list) {
-                System.out.print(s + " ");
-            }
-            System.out.println();
-        }
+class Point {
+    int row;
+    int col;
+    String value;
+    boolean shouldBeDeleted = false;
+
+    public Point(int row, int col, String value) {
+        this.row = row;
+        this.col = col;
+        this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Point point = (Point) o;
+        return row == point.row &&
+                col == point.col;
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }

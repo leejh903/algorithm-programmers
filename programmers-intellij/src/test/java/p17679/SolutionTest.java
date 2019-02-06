@@ -25,6 +25,22 @@ public class SolutionTest {
     }
 
     @Test
+    public void canDelete() {
+        int m = 6, n = 6;
+        String[] board = {"TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"};
+        List<List<Point>> lists = problem.init(m, n, board);
+        assertThat(problem.canDelete(lists, 0, 4)).isEqualTo(true);
+    }
+
+    @Test
+    public void canDelete2() {
+        int m = 6, n = 6;
+        String[] board = {"TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"};
+        List<List<Point>> lists = problem.init(m, n, board);
+        assertThat(problem.canDelete(lists, 4, 2)).isEqualTo(false);
+    }
+
+    @Test
     public void init() {
         int m = 6, n = 6;
         String[] board = {"TTTANT", "RRFACC", "RRRFCC", "TRRRAA", "TTMMMF", "TMMTTJ"};

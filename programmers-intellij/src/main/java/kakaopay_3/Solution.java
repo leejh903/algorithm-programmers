@@ -1,9 +1,6 @@
 package kakaopay_3;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Solution {
     public int[] solution(int N, int[] coffee_times) {
@@ -15,15 +12,21 @@ public class Solution {
         working = init2(N, queue);
 
         while(!working.isEmpty()){
-            for (int i = 0; i < working.size(); i++) {
-                Coffee coffee = working.poll();
-                coffee.time--;
+            Coffee temp = working.poll();
+            answer.add(temp.order);
+
+            Iterator<Coffee> iterator = working.iterator();
+            while(iterator.hasNext()) {
+                Coffee coffee = iterator.next();
+                coffee.time -= temp.time;
                 if(coffee.time == 0) {
                     answer.add(coffee.order);
-                    if(!queue.isEmpty()) working.offer(queue.poll());
-                    continue;
+                    iterator.remove();
                 }
-                working.offer(coffee);
+            }
+
+            while(!queue.isEmpty() && working.size() < N) {
+                working.offer(queue.poll());
             }
         }
 
@@ -36,7 +39,7 @@ public class Solution {
     }
 
     private Queue<Coffee> init2(int n, Queue<Coffee> queue) {
-        Queue<Coffee> working = new LinkedList<>();
+        Queue<Coffee> working = new PriorityQueue<>();
         for (int i = 0; i < n; i++) {
             working.add(queue.poll());
         }
@@ -52,7 +55,7 @@ public class Solution {
     }
 }
 
-class Coffee {
+class Coffee implements Comparable<Coffee>{
     int order;
     int time;
 
@@ -67,5 +70,13 @@ class Coffee {
                 "order=" + order +
                 ", time=" + time +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Coffee o) {
+        if(this.time == o.time) {
+            return this.order - o.order;
+        }
+        return this.time - o.time;
     }
 }

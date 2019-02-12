@@ -1,6 +1,7 @@
 package p17678;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 class Solution {
@@ -12,12 +13,12 @@ class Solution {
         int remainingSeat = m;
 
         for (int i = 0; i < n; i++) {
-            while(!queue.isEmpty() && remainingSeat > 0 && shuttleTime.compareTo(queue.peek()) >= 0) {
+            while (!queue.isEmpty() && remainingSeat > 0 && shuttleTime.compareTo(queue.peek()) >= 0) {
                 temp = queue.poll();
                 remainingSeat--;
             }
 
-            if(i + 1 < n) {  // 버스가 더 남아있다
+            if (i + 1 < n) {  // 버스가 더 남아있다
                 shuttleTime = shuttleTime.plusMinutes(t);
                 remainingSeat = m;
             }
@@ -28,12 +29,11 @@ class Solution {
     }
 
     Queue<LocalTime> init(String[] timetable) {
+        DateTimeFormatter TIMEFORMAT = DateTimeFormatter.ofPattern("HH:mm");
         Queue<LocalTime> timeList = new PriorityQueue<>();
-
         for (String s : timetable) {
-            String[] splitted = s.split(":");
-            if (splitted[0].equals("24")) splitted[0] = "00";
-            LocalTime time = LocalTime.of(Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]));
+            if(s.equals("24:00")) s = "23:59";
+            LocalTime time = LocalTime.parse(s, TIMEFORMAT);
             timeList.offer(time);
         }
         return timeList;

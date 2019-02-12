@@ -26,7 +26,7 @@ public class SolutionTest {
     @Test
     public void test_4() {
         int n = 1, t = 1, m = 5;
-        String[] timeTable = {"08:00", "08:01", "08:02", "08:03", "08:03", "09:32"};
+        String[] timeTable = {"08:00", "08:01", "08:02", "08:03", "08:03", "09:32", "14:32"};
         assertThat(problem.solution(n, t, m, timeTable)).isEqualTo("08:02");
     }
 
@@ -40,7 +40,7 @@ public class SolutionTest {
     @Test
     public void test_3() {
         int n = 3, t = 60, m = 1;
-        String[] timeTable = {"08:00", "08:03", "10:59"};
+        String[] timeTable = {"08:00", "08:03", "10:59", "11:00"};
         assertThat(problem.solution(n, t, m, timeTable)).isEqualTo("10:58");
     }
 

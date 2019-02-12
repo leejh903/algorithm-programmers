@@ -24,6 +24,13 @@ public class SolutionTest {
     }
 
     @Test
+    public void test_4() {
+        int n = 1, t = 1, m = 5;
+        String[] timeTable = {"08:00", "08:01", "08:02", "08:03", "08:03", "09:32"};
+        assertThat(problem.solution(n, t, m, timeTable)).isEqualTo("08:02");
+    }
+
+    @Test
     public void test_2() {
         int n = 3, t = 60, m = 2;
         String[] timeTable = {"08:00", "09:01", "10:00", "11:00"};

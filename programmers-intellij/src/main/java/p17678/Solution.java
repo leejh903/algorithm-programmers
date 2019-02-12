@@ -8,45 +8,33 @@ class Solution {
         Queue<LocalTime> queue = init(timetable);
 
         LocalTime shuttleTime = LocalTime.of(9, 0);
-        LocalTime temp = shuttleTime;
+        LocalTime temp = queue.peek();
         int remainingSeat = m;
-        int remainingBus = n - 1;
-        while (!queue.isEmpty()) {
-            temp = queue.peek();
-            if (remainingSeat > 0 && shuttleTime.compareTo(temp) >= 0) {
-                // can board, 셔틀 시간보다 작은 값
+
+        for (int i = 0; i < n; i++) {
+            while(!queue.isEmpty() && remainingSeat > 0 && shuttleTime.compareTo(queue.peek()) >= 0) {
+                temp = queue.poll();
                 remainingSeat--;
-                queue.poll();
-                continue;
             }
 
-            // cannot board, 셔틀 시간보다 큰 값
-            if (remainingBus == 0) break;
-            shuttleTime = shuttleTime.plusMinutes(t);
-            remainingBus--;
-            remainingSeat = m;
+            if(i + 1 < n) {  // 버스가 더 남아있다
+                shuttleTime = shuttleTime.plusMinutes(t);
+                remainingSeat = m;
+            }
         }
 
-//        System.out.println("shuttleTime : " + shuttleTime);
-//        System.out.println("remainingSeat : " + remainingSeat);
-//        System.out.println("remainingBus : " + remainingBus);
-
-//        while (remainingBus > 0) {
-//            shuttleTime = shuttleTime.plusMinutes(t);
-//            remainingBus--;
-//            remainingSeat = m;
-//        }
         if (remainingSeat > 0) return shuttleTime.toString();
         else return temp.minusMinutes(1).toString();
     }
 
     Queue<LocalTime> init(String[] timetable) {
         Queue<LocalTime> timeList = new PriorityQueue<>();
+
         for (String s : timetable) {
             String[] splitted = s.split(":");
             if (splitted[0].equals("24")) splitted[0] = "00";
-            timeList.offer(LocalTime.of(Integer.parseInt(splitted[0]),
-                    Integer.parseInt(splitted[1])));
+            LocalTime time = LocalTime.of(Integer.parseInt(splitted[0]), Integer.parseInt(splitted[1]));
+            timeList.offer(time);
         }
         return timeList;
     }

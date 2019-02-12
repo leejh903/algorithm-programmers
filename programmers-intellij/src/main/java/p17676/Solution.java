@@ -21,7 +21,6 @@ class Solution {
             answer = Math.max(answer, temp);
         }
 
-
         return answer;
     }
 
@@ -48,7 +47,10 @@ class Process implements Comparable<Process>{
     }
 
     public boolean include(long target) {
-        return startTime <= target && target <= endTime ;
+        long targetStart = target;
+        long targetEnd = target + 999;
+
+        return targetStart <= endTime && targetEnd >= startTime;
     }
 
     @Override

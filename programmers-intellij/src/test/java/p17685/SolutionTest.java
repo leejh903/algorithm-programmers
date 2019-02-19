@@ -2,8 +2,7 @@ package p17685;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,11 +12,15 @@ public class SolutionTest {
     @Test
     public void init() {
         String[] words = new String[]{"go", "gone", "guild"};
-        List<Node> list = problem.init(words);
-        Node temp = new Node('g', new ArrayList<>());
-        list = list.get(list.indexOf(temp)).list;
-        Node temp2 = new Node('o', new ArrayList<>());
-        System.out.println(list.get(list.indexOf(temp2)).list);
+        Map<Character, Node> map = problem.init(words);
+        System.out.println(map.get('g').map.get('o').map.get('n').map);
+    }
+
+    @Test
+    public void init2() {
+        String[] words = new String[]{"word", "war", "warrior", "world"};
+        Map<Character, Node> map = problem.init(words);
+        System.out.println(map.get('w').map.get('o').map);
     }
 
     @Test

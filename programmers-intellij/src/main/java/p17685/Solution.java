@@ -35,10 +35,8 @@ class Solution {
     public Map<Character, Node> init(String[] words) {
         Map<Character, Node> map = new HashMap<>();
         for (String word : words) {
-            char[] chars = word.toCharArray();
             Map<Character, Node> innerMap = map;
-            for (int i = 0; i < chars.length; i++) {
-                char c = chars[i];
+            for (char c : word.toCharArray()) {
                 Node thisNode = innerMap.getOrDefault(c, new Node());
                 thisNode.passCount++;
                 innerMap.put(c, thisNode);

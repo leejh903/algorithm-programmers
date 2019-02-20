@@ -30,8 +30,15 @@ public class SolutionTest {
     }
 
     @Test
+    public void n진수로_표현하기4() {
+        int N = 3;
+        int num = 37;
+        assertThat(problem.makeNnotation(N, num)).isEqualTo("1101");
+    }
+
+    @Test
     public void 십넘는수_표현() {
-        assertThat(problem.expressOverTen(11)).isEqualTo("B");
+        assertThat(problem.expressions[11]).isEqualTo("B");
     }
 
     @Test

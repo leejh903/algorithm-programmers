@@ -11,9 +11,9 @@ class Solution {
         while (!queue.isEmpty()) {
             StringBuilder sb = new StringBuilder();
             sb.append(queue.peek());
-            while (map.containsKey(sb.toString()) && !queue.isEmpty()) {
+            while (!queue.isEmpty() && map.containsKey(sb.toString())) {
                 queue.poll();
-                if(!queue.isEmpty()) sb.append(queue.peek());
+                sb.append(queue.peek());
             }
 
             if(!map.containsKey(sb.toString())) {

@@ -11,7 +11,7 @@ class Solution {
         List<Song> list = init(musicinfos);
 
         for (Song song : list) {
-            if (matchCheck(parse(m), song.notes)) answer.add(song);
+            if (matchCheck(parse(m), song)) answer.add(song);
         }
         Collections.sort(answer);
 
@@ -44,46 +44,19 @@ class Solution {
         return output;
     }
 
-    public boolean matchCheck(List<String> m, List<String> n) {
-        List<Integer> start = getStartTime(m, n);
-        for(int i = 0; i < start.size(); i++) {
-            int mPointer = 0;
-            int nPointer = start.get(i);
-            int playTime = m.size();
-            for (int j = 0; j < playTime; j++) {
-                if (!m.get(mPointer).equals(n.get(nPointer))) break;
-                mPointer++;
-                nPointer++;
-                if (nPointer >= n.size()) nPointer = 0;
-                if (j == playTime - 1) return true;
-            }
+    public boolean matchCheck(String m, Song song) {
+        StringBuilder sb = new StringBuilder();
+
+        int j = 0;
+        for (int i = 0; i < song.playTime; i++) {
+            j = i % song.notes.length();
+            sb.append(song.notes.charAt(j));
         }
-        return false;
+        return sb.toString().contains(m);
     }
 
-    private List<Integer> getStartTime(List<String> m, List<String> n) {
-        List<Integer> start = new LinkedList<>();
-        String target = m.get(0);
-        for (int i = 0; i < n.size(); i++) {
-            if (target.equals(n.get(i))) {
-                start.add(i);
-            }
-        }
-        return start;
-    }
-
-    public List<String> parse(String s) {
-        List<String> list = new ArrayList<>();
-        String[] splitted = s.split("");
-        for (int i = 0; i < splitted.length; i++) {
-            if(i + 1 <= splitted.length - 1 && splitted[i + 1].equals("#")) {
-                list.add(splitted[i] + "#");
-                i++;
-                continue;
-            }
-            list.add(splitted[i]);
-        }
-        return list;
+    public String parse(String s) {
+       return s.replace("C#", "c").replace("D#", "d").replace("F#", "f").replace("G#", "g").replace("A#", "a");
     }
 }
 
@@ -91,9 +64,9 @@ class Song implements Comparable<Song> {
     int index;
     int playTime;
     String name;
-    List<String> notes;
+    String notes;
 
-    public Song(int index, int playTime, String name, List<String> notes) {
+    public Song(int index, int playTime, String name, String notes) {
         this.index = index;
         this.playTime = playTime;
         this.name = name;

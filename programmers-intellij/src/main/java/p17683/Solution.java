@@ -11,10 +11,10 @@ class Solution {
         List<Song> list = init(musicinfos);
 
         for (Song song : list) {
-            if (matchCheck(m, song.notes)) answer.add(song);
+            if (matchCheck(parse(m), song.notes)) answer.add(song);
         }
-
         Collections.sort(answer);
+
         if (answer.isEmpty()) return "(None)";
         return answer.get(0).name;
     }
@@ -23,7 +23,7 @@ class Solution {
         List<Song> list = new ArrayList<>();
         for (int i = 0; i < musicinfos.length; i++) {
             String[] splittedInfo = musicinfos[i].split(",");
-            list.add(new Song(i + 1, timeDifference(splittedInfo[0], splittedInfo[1]), splittedInfo[2], splittedInfo[3]));
+            list.add(new Song(i + 1, timeDifference(splittedInfo[0], splittedInfo[1]), splittedInfo[2], parse(splittedInfo[3])));
         }
         return list;
     }
@@ -44,44 +44,46 @@ class Solution {
         return output;
     }
 
-    public boolean matchCheck(String m, String n) {
-        Queue<Integer> start = getStartTime(m, n);
-        while (!start.isEmpty()) {
+    public boolean matchCheck(List<String> m, List<String> n) {
+        List<Integer> start = getStartTime(m, n);
+        for(int i = 0; i < start.size(); i++) {
             int mPointer = 0;
-            int nPointer = start.poll();
-            int min = Math.min(m.length(), n.length());
-            for (int i = 0; i < min; i++) {
-                if (m.charAt(mPointer) != n.charAt(nPointer)) break;
-                if(hasSharp(m, mPointer) || hasSharp(n, nPointer)) {
-                    mPointer++;
-                    nPointer++;
-                    if (mPointer >= m.length()) mPointer = 0;
-                    if (nPointer >= n.length()) nPointer = 0;
-                    if (m.charAt(mPointer) != n.charAt(nPointer)) break;
-                }
+            int nPointer = start.get(i);
+            int playTime = m.size();
+            for (int j = 0; j < playTime; j++) {
+                if (!m.get(mPointer).equals(n.get(nPointer))) break;
                 mPointer++;
                 nPointer++;
-                if (mPointer >= m.length()) mPointer = 0;
-                if (nPointer >= n.length()) nPointer = 0;
-                if (i == min - 1) return true;
+                if (nPointer >= n.size()) nPointer = 0;
+                if (j == playTime - 1) return true;
             }
         }
         return false;
     }
 
-    private boolean hasSharp(String m, int pointer) {
-        return m.length() - 1 != pointer && m.charAt(pointer + 1) == '#';
-    }
-
-    private Queue<Integer> getStartTime(String m, String n) {
-        Queue<Integer> start = new LinkedList<>();
-        char target = m.charAt(0);
-        for (int i = 0; i < n.length(); i++) {
-            if (target == n.charAt(i)) {
-                start.offer(i);
+    private List<Integer> getStartTime(List<String> m, List<String> n) {
+        List<Integer> start = new LinkedList<>();
+        String target = m.get(0);
+        for (int i = 0; i < n.size(); i++) {
+            if (target.equals(n.get(i))) {
+                start.add(i);
             }
         }
         return start;
+    }
+
+    public List<String> parse(String s) {
+        List<String> list = new ArrayList<>();
+        String[] splitted = s.split("");
+        for (int i = 0; i < splitted.length; i++) {
+            if(i + 1 <= splitted.length - 1 && splitted[i + 1].equals("#")) {
+                list.add(splitted[i] + "#");
+                i++;
+                continue;
+            }
+            list.add(splitted[i]);
+        }
+        return list;
     }
 }
 
@@ -89,9 +91,9 @@ class Song implements Comparable<Song> {
     int index;
     int playTime;
     String name;
-    String notes;
+    List<String> notes;
 
-    public Song(int index, int playTime, String name, String notes) {
+    public Song(int index, int playTime, String name, List<String> notes) {
         this.index = index;
         this.playTime = playTime;
         this.name = name;

@@ -2,6 +2,7 @@ package p17683;
 
 import org.junit.Test;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,12 +34,12 @@ public class SolutionTest {
 
     @Test
     public void matchCheck() {
-        assertThat(problem.matchCheck("ABCDEFG", "CDEFGAB")).isEqualTo(true);
+        assertThat(problem.matchCheck(problem.parse("ABCDEFG"), problem.parse("CDEFGAB"))).isEqualTo(true);
     }
 
     @Test
     public void matchCheck2() {
-        assertThat(problem.matchCheck("CC#BCC#BCC#BCC#B", "CC#BCC#BCC#B")).isEqualTo(true);
+        assertThat(problem.matchCheck(problem.parse("CC#BCC#BCC#BCC#B"), problem.parse("CC#BCC#BCC#B"))).isEqualTo(true);
     }
 
     @Test
@@ -60,5 +61,34 @@ public class SolutionTest {
         String m = "ABC";
         String[] musicinfos = {"12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"};
         assertThat(problem.solution(m, musicinfos)).isEqualTo("WORLD");
+    }
+
+    @Test
+    public void test4() {
+        String m = "F";
+        String[] musicinfos = {"12:00,12:01,HELLO,F", "13:00,13:05,WORLD,ABCDEF"};
+        assertThat(problem.solution(m, musicinfos)).isEqualTo("WORLD");
+    }
+
+    @Test
+    public void 샵_분류() {
+        String s = "C#DEFGAB#";
+        List<String> list = problem.parse(s);
+        for (String s1 : list) {
+            System.out.println(s1);
+        }
+    }
+
+    @Test
+    public void parse() {
+        List<String> list = problem.parse("CC#BCC#BCC#BCC#B");
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+
+    @Test
+    public void localTime() {
+        System.out.println(problem.timeDifference("12:00", "13:20"));
     }
 }

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Combination {
 
-    void combination(int[] arr, int data[], int start, int end, int index, int r) {
+    public void combination(int[] arr, int[] data, int start, int end, int index, int r) {
         if(index == r) {
             System.out.println(Arrays.toString(data));
             return;

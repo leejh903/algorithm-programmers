@@ -36,7 +36,7 @@ public class SolutionTest {
                 {0, 0, 0, 2, 3, 0, 0, 0, 5, 5},
                 {1, 2, 2, 2, 3, 3, 0, 0, 0, 5},
                 {1, 1, 1, 0, 0, 0, 0, 0, 0, 5}};
-        int[][] map = problem.createMap(board);
+        int[][] map = problem.init(board);
         for (int[] ints : map) {
             System.out.println(Arrays.toString(ints));
         }

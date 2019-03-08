@@ -57,15 +57,6 @@ class Node implements Comparable<Node> {
         this.y = y;
     }
 
-    public void setLeft(Node left) {
-        this.left = left;
-    }
-
-    public void setRight(Node right) {
-        this.right = right;
-    }
-
-
     public void add(Node node) {
         if(node.x < this.x) {
             if(left != null) {
@@ -90,16 +81,5 @@ class Node implements Comparable<Node> {
             return this.x - o.x;
         }
         return o.y - this.y;
-    }
-
-    @Override
-    public String toString() {
-        return "Node{" +
-                "num=" + num +
-                ", x=" + x +
-                ", y=" + y +
-                ", left=" + left +
-                ", right=" + right +
-                '}';
     }
 }

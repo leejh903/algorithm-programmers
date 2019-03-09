@@ -8,18 +8,27 @@ class Solution {
     public int solution(int[] food_times, long k) {
         List<Food> foods = init(food_times);
 
-        Comparator<Food> timeComp = (o1, o2) -> o1.time - o2.time;
+        Comparator<Food> timeComp = new Comparator<Food>() {
+            @Override
+            public int compare(Food o1, Food o2) {
+                return o1.time - o2.time;
+            }
+        };
 
-        Comparator<Food> indexComp = (o1, o2) -> o1.index - o2.index;
+        Comparator<Food> indexComp = new Comparator<Food>() {
+            @Override
+            public int compare(Food o1, Food o2) {
+                return o1.index - o2.index;
+            }
+        };
 
         foods.sort(timeComp);
 
         int remaining = food_times.length;
+        int index = 0;
         int previous = 0;
-        int i = 0;
         for (Food food : foods) {
             long diff = food.time - previous;
-
             if (diff != 0) {
                 long spend = diff * remaining;
                 if (spend <= k) {
@@ -27,12 +36,13 @@ class Solution {
                     previous = food.time;
                 } else {
                     k %= remaining;
-                    foods.subList(i, food_times.length).sort(indexComp);
-                    return foods.get(i + (int) k).index;
+                    foods.subList(index, food_times.length).sort(indexComp);
+                    return foods.get(index + (int) k).index;
                 }
             }
+
             remaining--;
-            i++;
+            index++;
         }
 
         return -1;

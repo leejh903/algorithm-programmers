@@ -9,7 +9,8 @@ class Solution {
         List<Integer> postList = new ArrayList<>();
         preOrder(preList, root);
         postOrder(postList, root);
-        int[][] answer = {preList.stream().mapToInt(Integer::intValue).toArray(), postList.stream().mapToInt(Integer::intValue).toArray()};
+        int[][] answer = {preList.stream().mapToInt(Integer::intValue).toArray(),
+                        postList.stream().mapToInt(Integer::intValue).toArray()};
         return answer;
     }
 

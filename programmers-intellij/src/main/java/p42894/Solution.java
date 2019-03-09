@@ -1,6 +1,5 @@
 package p42894;
 
-
 class Solution {
     int n = 0;
     int[][] dRow = {{0, 0, 0, 1, 1, 1}, {0, 0, 1, 1, 2, 2}};

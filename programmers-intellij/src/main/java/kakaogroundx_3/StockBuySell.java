@@ -1,44 +1,29 @@
 package kakaogroundx_3;
 
-import java.util.ArrayList;
-
 class StockBuySell {
     public int stockBuySell(int price[]) {
         int answer = 0;
         int n = price.length;
+
         if (n == 1)
             return 0;
 
-        ArrayList<Interval> sol = new ArrayList<>();
+        int index = 0;
+        while (index < n - 1) {
+            while (index < n - 1 && price[index + 1] <= price[index]) index++;
 
-        int i = 0;
-        while (i < n - 1) {
-            while ((i < n - 1) && (price[i + 1] <= price[i]))
-                i++;
+            int buy = price[index];
 
-            if (i == n - 1)
-                break;
+            index++;
+            while(index < n && price[index - 1] <= price[index]) index++;
 
-            Interval e = new Interval();
-            e.buy = i++;
+            int sell = price[index - 1];
+            index++;
 
-            while ((i < n) && (price[i] >= price[i - 1]))
-                i++;
-
-            e.sell = i - 1;
-            sol.add(e);
-            i++;
-        }
-
-        for (Interval interval : sol) {
-            answer += (price[interval.sell] - price[interval.buy]);
+            answer += (sell - buy);
         }
 
         return answer;
     }
-}
-
-class Interval {
-    int buy, sell;
 }
 

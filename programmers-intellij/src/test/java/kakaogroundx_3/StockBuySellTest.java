@@ -3,7 +3,6 @@ package kakaogroundx_3;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 public class StockBuySellTest {
     StockBuySell problem = new StockBuySell();
@@ -16,7 +15,7 @@ public class StockBuySellTest {
 
     @Test
     public void test2() {
-        int[] gold_prices = {7, 2, 5, 6, 1, 4, 2, 8};
-        assertThat(problem.stockBuySell(gold_prices)).isEqualTo(10);
+        int[] gold_prices = {7, 2, 5, 6, 1, 4, 2, 8, 7, 1, 7, 10};
+        assertThat(problem.stockBuySell(gold_prices)).isEqualTo(19);
     }
 }

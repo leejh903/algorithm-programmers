@@ -8,8 +8,7 @@ function solution(key, lock) {
         for (let i = 0; i < range; i++) {
             for (let j = 0; j < range; j++) {
 
-                let extendedlock = extendlock(lock.length + (2 * (key.length - 1)), lock);
-
+                let extendedlock = extendlock(key.length, lock);
                 let pass = false;
                 for (let keyRow = 0; keyRow < key.length; keyRow++) {
                     for (let keyCol = 0; keyCol < key.length; keyCol++) {
@@ -19,36 +18,18 @@ function solution(key, lock) {
                         const lockVal = extendedlock[lockRow][lockCol];
                         const keyVal = key[keyRow][keyCol];
 
-                        // if(rotateCount == 0 && i == 3 && j == 3) {
-                        //     console.log(`lockRow: ${lockRow}, lockCol: ${lockCol}`);
-                        //     console.log(`lockVal: ${lockVal}, keyVal: ${keyVal}`);
-                        // }
+                        if (lockRow < key.length - 1 || lockCol < key.length - 1
+                            || lockRow >= lock.length + key.length - 1 || lockCol >= lock.length + key.length - 1) continue;
 
-                        if (lockVal === 0 && keyVal === 1 
-                            && (lockRow >= key.length - 1) && (lockRow < 2 * key.length - 1) 
-                            && (lockCol >= key.length - 1) && (lockCol < 2 * key.length - 1)
-                            ) extendedlock[lockRow][lockCol] = keyVal;
-                        if (lockVal === 1 && keyVal === 1) {
-                            pass = true;
-                            break;
+                        if (lockVal === 0 && keyVal === 1) {
+                            extendedlock[lockRow][lockCol] = keyVal;
                         }
+                        if (lockVal === 1 && keyVal === 1) pass = true;
                     }
-                    if (pass) break;
                 }
-
-
-                // if(rotateCount == 0 && i == 3 && j == 4) {
-                //     print(key);
-                //     print(extendedlock);
-                // }
 
                 if (pass) continue;
-                if (isValid(key.length - 1, lock.length, extendedlock)) {
-                    // console.log(i + ' ' + j);
-                    // print(extendedlock);
-                    return true;
-                }
-
+                if (isValid(key.length - 1, lock.length, extendedlock)) return true;
             }
         }
     }
@@ -71,12 +52,13 @@ function isValid(lockStart, lockLength, extendedlock) {
     return true;
 }
 
-function extendlock(range, lock) {
+function extendlock(keyLength, lock) {
+    const range = lock.length + (2 * (keyLength - 1));
     let arr = Array(range).fill(null).map(() => Array(range).fill(0));
     for (let i = 0; i < lock.length; i++) {
         for (let j = 0; j < lock.length; j++) {
-            let row = i + lock.length - 1;
-            let col = j + lock.length - 1;
+            let row = i + keyLength - 1;
+            let col = j + keyLength - 1;
             arr[row][col] = lock[i][j];
         }
     }
@@ -93,6 +75,14 @@ function rotateMatrix(matrix) {
     return flipMatrix(matrix.reverse())
 }
 
-// let key = [[0, 0, 0], [1, 0, 0], [0, 1, 1]];
-// let lock = [[1, 1, 1], [1, 1, 0], [1, 0, 1]];
+// let lock = [
+//     [1, 1, 1, 1, 1, 1, 1],
+//     [1, 1, 1, 1, 1, 1, 1],
+//     [1, 1, 1, 1, 1, 1, 0],
+//     [1, 1, 1, 1, 1, 1, 1],
+//     [1, 1, 1, 1, 0, 1, 1],
+//     [1, 1, 1, 1, 1, 1, 1],
+//     [1, 1, 1, 1, 1, 1, 1],
+// ]
+// let key = [[1, 0, 0], [0, 0, 0], [0, 0, 1]];
 // console.log(solution(key, lock));

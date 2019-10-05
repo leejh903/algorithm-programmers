@@ -18,17 +18,16 @@ function solution(key, lock) {
                         const lockVal = extendedlock[lockRow][lockCol];
                         const keyVal = key[keyRow][keyCol];
 
+                        // out of lock boundary: it should be considered
                         if (lockRow < key.length - 1 || lockCol < key.length - 1
                             || lockRow >= lock.length + key.length - 1 || lockCol >= lock.length + key.length - 1) continue;
 
-                        if (lockVal === 0 && keyVal === 1) {
-                            extendedlock[lockRow][lockCol] = keyVal;
-                        }
-                        if (lockVal === 1 && keyVal === 1) pass = true;
+                        if (lockVal === 0 && keyVal === 1) extendedlock[lockRow][lockCol] = keyVal;
+                        if (lockVal === 1 && keyVal === 1) pass = true;  // conflict case
                     }
                 }
 
-                if (pass) continue;
+                if (pass) continue;  // conflict case cannot be an answer
                 if (isValid(key.length - 1, lock.length, extendedlock)) return true;
             }
         }
@@ -43,6 +42,7 @@ function print(arr) {
     }
 }
 
+// check lock is all covered by 1
 function isValid(lockStart, lockLength, extendedlock) {
     for (let row = lockStart; row < lockStart + lockLength; row++) {
         for (let col = lockStart; col < lockStart + lockLength; col++) {
@@ -52,6 +52,7 @@ function isValid(lockStart, lockLength, extendedlock) {
     return true;
 }
 
+// extend Matrix to check all case
 function extendlock(keyLength, lock) {
     const range = lock.length + (2 * (keyLength - 1));
     let arr = Array(range).fill(null).map(() => Array(range).fill(0));

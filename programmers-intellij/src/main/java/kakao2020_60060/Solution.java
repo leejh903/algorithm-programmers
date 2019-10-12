@@ -2,19 +2,41 @@ package kakao2020_60060;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 class Solution {
     public int[] solution(String[] words, String[] queries) {
-        int[] answer = {};
+        int[] answer = new int[queries.length];
 
+        Trie normalTrie = new Trie();
+        Trie reversedTrie = new Trie();
+
+        // insert to Trie
+        for (String word : words) {
+            normalTrie.insert(word);
+            reversedTrie.insert(new StringBuilder(word).reverse().toString());
+        }
+
+        for (int i = 0; i < queries.length; i++) {
+            int temp;
+
+            if (queries[i].startsWith("?")) {
+                String reversed = new StringBuilder(queries[i]).reverse().toString();
+                temp = reversedTrie.getNodeCount(reversed);
+            } else {
+                temp = normalTrie.getNodeCount(queries[i]);
+            }
+
+            answer[i] = temp;
+        }
 
         return answer;
     }
 
-    public static class Tri {
+    public static class Trie {
         private TrieNode root;
 
-        public Tri() {
+        public Trie() {
             root = new TrieNode();
         }
 
@@ -22,64 +44,69 @@ class Solution {
             TrieNode current = root;
 
             for (int i = 0; i < keyword.length(); i++) {
-                TrieNode temp = current;
-                current = current.getChildren().computeIfAbsent(keyword.charAt(i), c -> new TrieNode());
-                System.out.println(temp.getChildren().get('d').getChildren());
+                TrieKey tempKey = new TrieKey(keyword.charAt(i), keyword.length() - i - 1);
+                current.passed();
+                current = current.getChildren().computeIfAbsent(tempKey, trieKey -> new TrieNode());
             }
-            current.setEndOfWord(true);
         }
 
-        public boolean containsNode(String query) {
+        public int getNodeCount(String query) {
             TrieNode current = root;
 
+            int count = 0;
             for (int i = 0; i < query.length(); i++) {
                 char ch = query.charAt(i);
-                TrieNode node = current.getChildren().get(ch);
-                if (node == null) {
-                    return false;
-                }
+                TrieKey tempKey = new TrieKey(ch, query.length() - i - 1);
+                TrieNode node = current.getChildren().get(tempKey);
+                if (node == null) break;  // when ch has '?' or char which has not been
+
+                count = node.getPasses();
                 current = node;
             }
-            return current.isEndOfWord();
-        }
-
-        public boolean isEmpty() {
-            return root == null;
+            return count;
         }
 
     }
 
     public static class TrieNode {
+        private final Map<TrieKey, TrieNode> children = new HashMap<>();
+        private int passes = 0;
 
-        private final Map<Character, TrieNode> children = new HashMap<>();
-        private boolean endOfWord;
-        private int lefts;
-
-        public Map<Character, TrieNode> getChildren() {
+        public Map<TrieKey, TrieNode> getChildren() {
             return children;
         }
 
-        public boolean isEndOfWord() {
-            return endOfWord;
+        public void passed() {
+            passes++;
         }
 
-        public void setEndOfWord(boolean endOfWord) {
-            this.endOfWord = endOfWord;
+        public int getPasses() {
+            return passes;
         }
+    }
 
-        public int getLefts() {
-            return lefts;
-        }
+    public static class TrieKey {
+        private Character character;
+        private int lefts;
 
-        public void setLefts(int lefts) {
+        public TrieKey(Character character, int lefts) {
+            this.character = character;
             this.lefts = lefts;
         }
-    }
 
-    public static void main(String[] args) {
-        Tri start = new Tri();
-        start.insert("dictionary");
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            TrieKey trieKey = (TrieKey) o;
+            return lefts == trieKey.lefts &&
+                    Objects.equals(character, trieKey.character);
+        }
 
+        @Override
+        public int hashCode() {
+            return Objects.hash(character, lefts);
+        }
+    }
 }
 

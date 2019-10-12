@@ -1,10 +1,10 @@
 package kakao2020_60060;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 class Solution {
+    private Map<String, Integer> cache = new HashMap<>();
+
     public int[] solution(String[] words, String[] queries) {
         int[] answer = new int[queries.length];
 
@@ -12,21 +12,32 @@ class Solution {
         Trie reversedTrie = new Trie();
 
         // insert to Trie
-        for (String word : words) {
+        Set<String> uniqueWords = new HashSet<>(Arrays.asList(words));
+        for (String word : uniqueWords) {
             normalTrie.insert(word);
             reversedTrie.insert(new StringBuilder(word).reverse().toString());
         }
 
         for (int i = 0; i < queries.length; i++) {
-            int temp;
-
-            if (queries[i].startsWith("?")) {
-                String reversed = new StringBuilder(queries[i]).reverse().toString();
-                temp = reversedTrie.getNodeCount(reversed);
-            } else {
-                temp = normalTrie.getNodeCount(queries[i]);
+            String query = queries[i];
+            if(cache.containsKey(query)) {
+                answer[i] = cache.get(query);
+                continue;
             }
 
+            int temp;
+            if (query.startsWith("?")) {
+                String reversed = new StringBuilder(query).reverse().toString();
+
+                if(reversed.startsWith("?")) {
+                    temp = normalTrie.getNodeCountByLength(reversed.length()); // all of char is ?
+                }
+                else temp = reversedTrie.getNodeCount(reversed);
+            } else {
+                temp = normalTrie.getNodeCount(query);
+            }
+
+            cache.put(query, temp);
             answer[i] = temp;
         }
 
@@ -45,8 +56,8 @@ class Solution {
 
             for (int i = 0; i < keyword.length(); i++) {
                 TrieKey tempKey = new TrieKey(keyword.charAt(i), keyword.length() - i - 1);
-                current.passed();
                 current = current.getChildren().computeIfAbsent(tempKey, trieKey -> new TrieNode());
+                current.passed();
             }
         }
 
@@ -62,6 +73,16 @@ class Solution {
 
                 count = node.getPasses();
                 current = node;
+            }
+            return count;
+        }
+
+        public int getNodeCountByLength(int length) {
+            Set<TrieKey> keySet = root.getChildren().keySet();
+
+            int count = 0;
+            for (TrieKey trieKey : keySet) {
+                if(trieKey.lefts == length - 1) count += root.getChildren().get(trieKey).getPasses();
             }
             return count;
         }

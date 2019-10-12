@@ -61,8 +61,55 @@ public class SolutionTest {
     @Test
     public void queryTest2() {
         String[] words = {"frodo", "front", "frost", "frozen", "frame", "kakao"};
-        String[] queries = {"fro??", "????o", "fr???", "fro???", "pro?"};
-        int[] answers = {3, 2, 4, 1, 0};
+        String[] queries = {"fro??", "????o", "fr???", "fro???", "pro?", "?????"};
+        int[] answers = {3, 2, 4, 1, 0, 5};
+        assertTrue(Arrays.equals(solution.solution(words, queries), answers));
+    }
+
+    @Test
+    public void queryTest3() {
+        Solution.Trie root = new Solution.Trie();
+        root.insert("frodo");
+        root.insert("front");
+        root.insert("frost");
+        root.insert("frozen");
+        root.insert("frame");
+        root.insert("kakao");
+
+        assertEquals(root.getNodeCountByLength("?????".length()), 5);
+        assertEquals(root.getNodeCountByLength("??????".length()), 1);
+    }
+
+    @Test
+    public void queryTest4() {
+        String[] words = {"ab", "cd", "de", "bw"};
+        String[] queries = {"??", "???", "?", "???????"};
+        int[] answers = {4, 0, 0, 0};
+        assertTrue(Arrays.equals(solution.solution(words, queries), answers));
+    }
+
+    @Test
+    public void queryTest5() {
+        String[] words = {"ab", "ab", "ab", "ab", "ab"};
+        String[] queries = {"??", "???", "?", "a?", "?b"};
+        int[] answers = {1, 0, 0, 1, 1};
+        System.out.println(Arrays.toString(solution.solution(words, queries)));
+        assertTrue(Arrays.equals(solution.solution(words, queries), answers));
+    }
+
+    @Test
+    public void queryTest6() {
+        String[] words = {"a", "b", "c", "d", "a", "b", "ae"};
+        String[] queries = {"?", "??", "a??", "a?"};
+        int[] answers = {4, 1, 0, 1};
+        assertTrue(Arrays.equals(solution.solution(words, queries), answers));
+    }
+
+    @Test
+    public void queryTest7() {
+        String[] words = {"a", "b", "c", "d", "a", "b", "ae"};
+        String[] queries = {"?", "??"};
+        int[] answers = {4, 1};
         assertTrue(Arrays.equals(solution.solution(words, queries), answers));
     }
 }

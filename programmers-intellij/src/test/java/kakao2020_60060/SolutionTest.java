@@ -3,33 +3,13 @@ package kakao2020_60060;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SolutionTest {
     Solution solution = new Solution();
-
-    @Test
-    public void TrieKeyEquals() {
-        Solution.TrieKey key1 = new Solution.TrieKey('a', 4);
-        Solution.TrieKey key2 = new Solution.TrieKey('a', 4);
-        Solution.TrieKey key3 = new Solution.TrieKey('a', 6);
-
-        assertEquals(key1, key2);
-        assertNotEquals(key2, key3);
-
-        Map<Solution.TrieKey, Integer> map1 = new HashMap<>();
-        map1.put(key1, 1);
-        map1.put(key2, 3);
-        assertEquals(map1.keySet().size(), 1);
-
-        Map<Solution.TrieKey, Integer> map2 = new HashMap<>();
-        map2.put(key2, 1);
-        map2.put(key3, 3);
-        assertEquals(map2.keySet().size(), 2);
-    }
 
     @Test
     public void queryTest() {
@@ -64,20 +44,6 @@ public class SolutionTest {
         String[] queries = {"fro??", "????o", "fr???", "fro???", "pro?", "?????"};
         int[] answers = {3, 2, 4, 1, 0, 5};
         assertTrue(Arrays.equals(solution.solution(words, queries), answers));
-    }
-
-    @Test
-    public void queryTest3() {
-        Solution.Trie root = new Solution.Trie();
-        root.insert("frodo");
-        root.insert("front");
-        root.insert("frost");
-        root.insert("frozen");
-        root.insert("frame");
-        root.insert("kakao");
-
-        assertEquals(root.getNodeCountByLength("?????".length()), 5);
-        assertEquals(root.getNodeCountByLength("??????".length()), 1);
     }
 
     @Test
@@ -116,8 +82,13 @@ public class SolutionTest {
     @Test
     public void queryTest8() {
         String[] words = {"ab", "abc", "abd", "abe"};
-        String[] queries = {"a??", "ab?"};
-        int[] answers = {3, 3};
+        String[] queries = {"a??", "ab?", "abc?", "?abc", "?bc", "?ab", "???"};
+        int[] answers = {3, 3, 0, 0, 1, 0, 3};
         assertTrue(Arrays.equals(solution.solution(words, queries), answers));
+    }
+
+    @Test
+    public void equals() {
+        assertTrue(Objects.equals(Character.valueOf('a'), 'a'));
     }
 }

@@ -20,7 +20,7 @@ class Solution {
 
         for (int i = 0; i < queries.length; i++) {
             String query = queries[i];
-            if(cache.containsKey(query)) {
+            if (cache.containsKey(query)) {
                 answer[i] = cache.get(query);
                 continue;
             }
@@ -28,11 +28,7 @@ class Solution {
             int temp;
             if (query.startsWith("?")) {
                 String reversed = new StringBuilder(query).reverse().toString();
-
-                if(reversed.startsWith("?")) {
-                    temp = normalTrie.getNodeCountByLength(reversed.length()); // all of char is ?
-                }
-                else temp = reversedTrie.getNodeCount(reversed);
+                temp = reversedTrie.getNodeCount(reversed);
             } else {
                 temp = normalTrie.getNodeCount(query);
             }
@@ -55,34 +51,26 @@ class Solution {
             TrieNode current = root;
 
             for (int i = 0; i < keyword.length(); i++) {
-                TrieKey tempKey = new TrieKey(keyword.charAt(i), keyword.length() - i - 1);
-                current = current.getChildren().computeIfAbsent(tempKey, trieKey -> new TrieNode());
-                current.passed();
+                current = current.getChildren().computeIfAbsent(keyword.charAt(i), trieKey -> new TrieNode());
             }
+            current.setEndOfWord(true);
         }
 
         public int getNodeCount(String query) {
-            TrieNode current = root;
-
-            int count = 0;
-            for (int i = 0; i < query.length(); i++) {
-                char ch = query.charAt(i);
-                TrieKey tempKey = new TrieKey(ch, query.length() - i - 1);
-                TrieNode node = current.getChildren().get(tempKey);
-                if (node == null) break;  // when ch has '?' or char which has not been
-
-                count = node.getPasses();
-                current = node;
-            }
-            return count;
+            return search(root, query, 0);
         }
 
-        public int getNodeCountByLength(int length) {
-            Set<TrieKey> keySet = root.getChildren().keySet();
+        private int search(TrieNode node, String query, int depth) {
+            if (depth == query.length()) {
+                if (node.isEndOfWord()) return 1;
+                return 0;
+            }
 
             int count = 0;
-            for (TrieKey trieKey : keySet) {
-                if(trieKey.lefts == length - 1) count += root.getChildren().get(trieKey).getPasses();
+            for (char character : node.getChildren().keySet()) {
+                if (query.charAt(depth) == character || query.charAt(depth) == '?') {
+                    count += search(node.getChildren().get(character), query, depth + 1);
+                }
             }
             return count;
         }
@@ -90,43 +78,19 @@ class Solution {
     }
 
     public static class TrieNode {
-        private final Map<TrieKey, TrieNode> children = new HashMap<>();
-        private int passes = 0;
+        private final Map<Character, TrieNode> children = new HashMap<>();
+        private boolean isEndOfWord;
 
-        public Map<TrieKey, TrieNode> getChildren() {
+        public Map<Character, TrieNode> getChildren() {
             return children;
         }
 
-        public void passed() {
-            passes++;
+        public boolean isEndOfWord() {
+            return isEndOfWord;
         }
 
-        public int getPasses() {
-            return passes;
-        }
-    }
-
-    public static class TrieKey {
-        private Character character;
-        private int lefts;
-
-        public TrieKey(Character character, int lefts) {
-            this.character = character;
-            this.lefts = lefts;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            TrieKey trieKey = (TrieKey) o;
-            return lefts == trieKey.lefts &&
-                    Objects.equals(character, trieKey.character);
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(character, lefts);
+        public void setEndOfWord(boolean endOfWord) {
+            isEndOfWord = endOfWord;
         }
     }
 }

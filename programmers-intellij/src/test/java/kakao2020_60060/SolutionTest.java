@@ -107,9 +107,17 @@ public class SolutionTest {
 
     @Test
     public void queryTest7() {
-        String[] words = {"a", "b", "c", "d", "a", "b", "ae"};
-        String[] queries = {"?", "??"};
-        int[] answers = {4, 1};
+        String[] words = {"brandon", "colin", "conan", "jesse", "jess", "brad", "cry", "cay", "a"};
+        String[] queries = {"br?", "????n", "??????n", "??y", "?", "???????????????a"};
+        int[] answers = {0, 2, 1, 2, 1, 0};
+        assertTrue(Arrays.equals(solution.solution(words, queries), answers));
+    }
+
+    @Test
+    public void queryTest8() {
+        String[] words = {"ab", "abc", "abd", "abe"};
+        String[] queries = {"a??", "ab?"};
+        int[] answers = {3, 3};
         assertTrue(Arrays.equals(solution.solution(words, queries), answers));
     }
 }

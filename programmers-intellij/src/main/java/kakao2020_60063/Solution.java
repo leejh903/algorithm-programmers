@@ -31,7 +31,21 @@ class Solution {
             Robot robot = queue.poll();
             for (Function<Robot, Boolean> motion : motions) {
                 Robot copy = robot.clone();
+
+                // debugging
+                List<Coordinate> cod = new ArrayList<>(Arrays.asList(new Coordinate(3, 2), new Coordinate(4, 2)));
+                Robot temp = new Robot(cod, 0);
+                if (copy.equals(temp)) {
+                    System.out.println(copy);
+                }
+
                 Boolean canMove = motion.apply(copy);
+
+                // debugging
+                if (copy.equals(temp)) {
+                    System.out.println(copy);
+                    System.out.println();
+                }
 
                 if (copy.reachFinal()) {
                     reached = true;
@@ -69,7 +83,10 @@ class Solution {
         }
 
         public boolean right() {
-            if (coordinates.get(0).col == N - 1 || coordinates.get(1).col == N - 1) return false;
+            Coordinate first = coordinates.get(0);
+            Coordinate second = coordinates.get(1);
+            if (first.col == N - 1 || second.col == N - 1 ||
+                    _board[first.row][first.col + 1] == 1 || _board[second.row][second.col + 1] == 1) return false;
             for (Coordinate coordinate : coordinates) {
                 coordinate.col++;
             }
@@ -77,7 +94,10 @@ class Solution {
         }
 
         public boolean left() {
-            if (coordinates.get(0).col == 0 || coordinates.get(1).col == 0) return false;
+            Coordinate first = coordinates.get(0);
+            Coordinate second = coordinates.get(1);
+            if (first.col == 0 || second.col == 0 ||
+                    _board[first.row][first.col - 1] == 1 || _board[second.row][second.col - 1] == 1) return false;
             for (Coordinate coordinate : coordinates) {
                 coordinate.col--;
             }
@@ -85,7 +105,10 @@ class Solution {
         }
 
         public boolean up() {
-            if (coordinates.get(0).row == 0 || coordinates.get(1).row == 0) return false;
+            Coordinate first = coordinates.get(0);
+            Coordinate second = coordinates.get(1);
+            if (first.row == 0 || second.row == 0 ||
+                    _board[first.row - 1][first.col] == 1 || _board[second.row - 1][second.col] == 1) return false;
             for (Coordinate coordinate : coordinates) {
                 coordinate.row--;
             }
@@ -93,7 +116,10 @@ class Solution {
         }
 
         public boolean down() {
-            if (coordinates.get(0).row == N - 1 || coordinates.get(1).row == N - 1) return false;
+            Coordinate first = coordinates.get(0);
+            Coordinate second = coordinates.get(1);
+            if (first.row == N - 1 || second.row == N - 1 ||
+                    _board[first.row + 1][first.col] == 1 || _board[second.row + 1][second.col] == 1) return false;
             for (Coordinate coordinate : coordinates) {
                 coordinate.row++;
             }
@@ -103,27 +129,47 @@ class Solution {
         private boolean clockWise(Coordinate target, Coordinate axis) {
             // 축이 위쪽
             if (axis.row == target.row - 1 && axis.col == target.col) {
-                if (target.col == 0 || _board[target.row][target.col - 1] == 1) return false;
+                if (target.col == 0 || _board[target.row][target.col - 1] == 1 || _board[target.row - 1][target.col - 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("시계: 축이 위쪽");
                 target.col--;
                 target.row--;
+                return true;
             }
             // 축이 아래쪽
             if (axis.row == target.row + 1 && axis.col == target.col) {
-                if (target.col == N - 1 || _board[target.row][target.col + 1] == 1) return false;
+                if (target.col == N - 1 || _board[target.row][target.col + 1] == 1 || _board[target.row + 1][target.col + 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("시계: 축이 아래쪽");
                 target.col++;
                 target.row++;
+                return true;
             }
             // 축이 오른쪽
             if (axis.row == target.row && axis.col == target.col + 1) {
-                if (target.row == 0 || _board[target.row - 1][target.col] == 1) return false;
+                if (target.row == 0 || _board[target.row - 1][target.col] == 1 || _board[target.row - 1][target.col + 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("시계: 축이 오른쪽");
                 target.col++;
                 target.row--;
+                return true;
             }
             // 축이 왼쪽
             if (axis.row == target.row && axis.col == target.col - 1) {
-                if (target.row == N - 1 || _board[target.row + 1][target.col] == 1) return false;
+                if (target.row == N - 1 || _board[target.row + 1][target.col] == 1 || _board[target.row + 1][target.col - 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("시계: 축이 왼쪽");
                 target.col--;
                 target.row++;
+                return true;
             }
             return true;
         }
@@ -131,27 +177,47 @@ class Solution {
         private boolean counterClockWise(Coordinate target, Coordinate axis) {
             // 축이 위쪽
             if (axis.row == target.row - 1 && axis.col == target.col) {
-                if (target.col == N - 1 || _board[target.row][target.col + 1] == 1) return false;
+                if (target.col == N - 1 || _board[target.row][target.col + 1] == 1 || _board[target.row - 1][target.col + 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("반시계: 축이 위쪽");
                 target.col++;
                 target.row--;
+                return true;
             }
             // 축이 아래쪽
             if (axis.row == target.row + 1 && axis.col == target.col) {
-                if (target.col == 0 || _board[target.row][target.col - 1] == 1) return false;
+                if (target.col == 0 || _board[target.row][target.col - 1] == 1 || _board[target.row + 1][target.col - 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("반시계: 축이 아래쪽");
                 target.col--;
                 target.row++;
+                return true;
             }
             // 축이 오른쪽
             if (axis.row == target.row && axis.col == target.col + 1) {
-                if (target.row == N - 1 || _board[target.row + 1][target.col] == 1) return false;
+                if (target.row == N - 1 || _board[target.row + 1][target.col] == 1 || _board[target.row + 1][target.col + 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("반시계: 축이 오른쪽");
                 target.col++;
                 target.row++;
+                return true;
             }
             // 축이 왼쪽
             if (axis.row == target.row && axis.col == target.col - 1) {
-                if (target.row == 0 || _board[target.row - 1][target.col] == 1) return false;
+                if (target.row == 0 || _board[target.row - 1][target.col] == 1 || _board[target.row - 1][target.col - 1] == 1) {
+                    return false;
+                }
+
+                System.out.println("반시계: 축이 왼쪽");
                 target.col--;
                 target.row--;
+                return true;
             }
             return true;
         }
@@ -192,6 +258,14 @@ class Solution {
         @Override
         public int hashCode() {
             return Objects.hash(coordinates);
+        }
+
+        @Override
+        public String toString() {
+            return "Robot{" +
+                    "coordinates=" + coordinates +
+                    ", count=" + count +
+                    '}';
         }
     }
 

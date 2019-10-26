@@ -27,7 +27,7 @@ public class SolutionTest {
         List<Solution.Coordinate> set2 = new ArrayList<>();
         set2.add(coordinate3);
         set2.add(coordinate4);
-        Solution.Robot robot2 = new Solution.Robot(set2, 0);
+        Solution.Robot robot2 = new Solution.Robot(set2, 3);
 
         Set<Solution.Robot> robots = new HashSet<>();
         robots.add(robot1);
@@ -39,8 +39,39 @@ public class SolutionTest {
     }
 
     @Test
-    public void name() {
-        int[][] board = {{0, 0, 0, 1, 1}, {0, 0, 0, 1, 0}, {0, 1, 0, 1, 1}, {1, 1, 0, 0, 1}, {0, 0, 0, 0, 0}};
+    public void test() {
+        int[][] board = {
+                {0, 0, 0, 1, 1},
+                {0, 0, 0, 1, 0},
+                {0, 1, 0, 1, 1},
+                {1, 1, 0, 0, 1},
+                {0, 0, 0, 0, 0}
+        };
         assertEquals(7, solution.solution(board));
+    }
+
+    @Test
+    public void test2() {
+        int[][] board = {
+                {0, 0, 0, 0, 1},
+                {1, 1, 0, 0, 1},
+                {1, 1, 1, 0, 1},
+                {1, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0}
+        };
+        assertEquals(7, solution.solution(board));
+    }
+
+    @Test
+    public void test3() {
+        int[][] board = {
+                {0, 0, 0, 0, 0, 0},
+                {1, 1, 1, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 1, 1, 1},
+                {0, 0, 0, 0, 0, 0},
+                {1, 1, 1, 0, 0, 0}
+        };
+        assertEquals(18, solution.solution(board));
     }
 }

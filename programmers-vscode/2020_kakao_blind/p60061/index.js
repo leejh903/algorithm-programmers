@@ -9,43 +9,52 @@ function solution(n, build_frame) {
         return false;
     }
 
-    function canRemoveStand(x, y) {
-        if ((x !== 0 && bridges[y + 1][x - 1]) && !bridges[y + 1][x]) return false;  // 왼쪽 보 있고, 오른쪽 보 없을 때
-        if (!(x !== 0 && bridges[y + 1][x - 1]) && bridges[y + 1][x]) return false;  // 왼쪽 보 없고, 오른쪽 보 있을 때
-        return true;
-    }
-
     function canInstallBridge(x, y) {
         if ((x !== 0 && x < n - 1 && bridges[y][x - 1]) && bridges[y][x + 1]) return true;  // 양 옆에 보가 있는 경우
         if (stands[y - 1][x] || stands[y - 1][x + 1]) return true;  // 왼쪽 또는 오른쪽에 기둥이 있는 경우
         return false;
     }
 
-    function canRemoveBridge(x, y) {
-        if (((x !== 0 && stands[y - 1][x - 1]) || stands[y - 1][x]) &&  // 왼쪽 보 버틸 수 있는 경우
-            (stands[y - 1][x + 1] || stands[y - 1][x + 2])) return true;  // 오른쪽 보 버틸 수 있는 경우
-        return false;
+    function remove(x, y, isBridge) {
+        // suppose remove
+        if (isBridge) bridges[y][x] = false;
+        else stands[y][x] = false;
+
+        let canRemove = true;
+        for (let i = 0; i < n + 1; i++) {
+            for (let j = 0; j < n + 1; j++) {
+                if (bridges[j][i]) {
+                    if (!canInstallBridge(i, j)) canRemove = false;
+                }
+                if (stands[j][i]) {
+                    if (!canInstallStand(i, j)) canRemove = false;
+                }
+            }
+            if (!canRemove) break;
+        }
+
+        // rollback if cannot remove
+        if (!canRemove) {
+            if (isBridge) bridges[y][x] = true;
+            else stands[y][x] = true;
+        }
+
     }
 
     for (const element of build_frame) {
         let x = element[0];
         let y = element[1];
 
-        if (element[2] === 0) {   // is stand
-            if (element[3] === 0) {  // want to remove stand
-                if (canRemoveStand(x, y)) stands[y][x] = false;
-            }
-            if (element[3] === 1) {  // want to install stand
+        if (element[3] === 1) {   // want to install
+            if (element[2] === 0) {  // want to install stand
                 if (canInstallStand(x, y)) stands[y][x] = true;
             }
-        }
-        if (element[2] === 1) {  // is bridge
-            if (element[3] === 0) {  // want to remove bridge
-                if (canRemoveBridge(x, y)) bridges[y][x] = false;
-            }
-            if (element[3] === 1) {  // want to install bridge
+            if (element[2] === 1) {  // want to install bridge
                 if (canInstallBridge(x, y)) bridges[y][x] = true;
             }
+        }
+        if (element[3] === 0) {  // want to remove
+            remove(x, y, element[2])
         }
     }
 

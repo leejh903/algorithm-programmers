@@ -1,5 +1,6 @@
 package kakao2020_60063;
 
+
 import java.util.*;
 import java.util.function.Function;
 
@@ -31,21 +32,7 @@ class Solution {
             Robot robot = queue.poll();
             for (Function<Robot, Boolean> motion : motions) {
                 Robot copy = robot.clone();
-
-                // debugging
-                List<Coordinate> cod = new ArrayList<>(Arrays.asList(new Coordinate(3, 2), new Coordinate(4, 2)));
-                Robot temp = new Robot(cod, 0);
-                if (copy.equals(temp)) {
-                    System.out.println(copy);
-                }
-
                 Boolean canMove = motion.apply(copy);
-
-                // debugging
-                if (copy.equals(temp)) {
-                    System.out.println(copy);
-                    System.out.println();
-                }
 
                 if (copy.reachFinal()) {
                     reached = true;
@@ -133,43 +120,35 @@ class Solution {
                     return false;
                 }
 
-                System.out.println("시계: 축이 위쪽");
                 target.col--;
                 target.row--;
-                return true;
             }
             // 축이 아래쪽
-            if (axis.row == target.row + 1 && axis.col == target.col) {
+            else if (axis.row == target.row + 1 && axis.col == target.col) {
                 if (target.col == N - 1 || _board[target.row][target.col + 1] == 1 || _board[target.row + 1][target.col + 1] == 1) {
                     return false;
                 }
 
-                System.out.println("시계: 축이 아래쪽");
                 target.col++;
                 target.row++;
-                return true;
             }
             // 축이 오른쪽
-            if (axis.row == target.row && axis.col == target.col + 1) {
+            else if (axis.row == target.row && axis.col == target.col + 1) {
                 if (target.row == 0 || _board[target.row - 1][target.col] == 1 || _board[target.row - 1][target.col + 1] == 1) {
                     return false;
                 }
 
-                System.out.println("시계: 축이 오른쪽");
                 target.col++;
                 target.row--;
-                return true;
             }
             // 축이 왼쪽
-            if (axis.row == target.row && axis.col == target.col - 1) {
+            else if (axis.row == target.row && axis.col == target.col - 1) {
                 if (target.row == N - 1 || _board[target.row + 1][target.col] == 1 || _board[target.row + 1][target.col - 1] == 1) {
                     return false;
                 }
 
-                System.out.println("시계: 축이 왼쪽");
                 target.col--;
                 target.row++;
-                return true;
             }
             return true;
         }
@@ -181,40 +160,33 @@ class Solution {
                     return false;
                 }
 
-                System.out.println("반시계: 축이 위쪽");
                 target.col++;
                 target.row--;
-                return true;
             }
             // 축이 아래쪽
-            if (axis.row == target.row + 1 && axis.col == target.col) {
+            else if (axis.row == target.row + 1 && axis.col == target.col) {
                 if (target.col == 0 || _board[target.row][target.col - 1] == 1 || _board[target.row + 1][target.col - 1] == 1) {
                     return false;
                 }
 
-                System.out.println("반시계: 축이 아래쪽");
                 target.col--;
                 target.row++;
-                return true;
             }
             // 축이 오른쪽
-            if (axis.row == target.row && axis.col == target.col + 1) {
+            else if (axis.row == target.row && axis.col == target.col + 1) {
                 if (target.row == N - 1 || _board[target.row + 1][target.col] == 1 || _board[target.row + 1][target.col + 1] == 1) {
                     return false;
                 }
 
-                System.out.println("반시계: 축이 오른쪽");
                 target.col++;
                 target.row++;
-                return true;
             }
             // 축이 왼쪽
-            if (axis.row == target.row && axis.col == target.col - 1) {
+            else if (axis.row == target.row && axis.col == target.col - 1) {
                 if (target.row == 0 || _board[target.row - 1][target.col] == 1 || _board[target.row - 1][target.col - 1] == 1) {
                     return false;
                 }
 
-                System.out.println("반시계: 축이 왼쪽");
                 target.col--;
                 target.row--;
                 return true;

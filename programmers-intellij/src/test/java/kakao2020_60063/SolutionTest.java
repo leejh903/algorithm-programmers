@@ -72,6 +72,6 @@ public class SolutionTest {
                 {0, 0, 0, 0, 0, 0},
                 {1, 1, 1, 0, 0, 0}
         };
-        assertEquals(18, solution.solution(board));
+        assertEquals(17, solution.solution(board));
     }
 }

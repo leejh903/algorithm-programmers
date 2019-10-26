@@ -91,4 +91,9 @@ public class SolutionTest {
     public void equals() {
         assertTrue(Objects.equals(Character.valueOf('a'), 'a'));
     }
+
+    @Test
+    public void name() {
+        System.out.println(Integer.MAX_VALUE);
+    }
 }

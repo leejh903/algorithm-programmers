@@ -1,51 +1,44 @@
 package l30;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 class Solution {
-    List<String> perm = new ArrayList<>();
-
     public List<Integer> findSubstring(String s, String[] words) {
-        permutation(words, 0, words.length, words.length);
+        Map<String, Integer> map = new HashMap<>();
 
-        Set<Integer> answer = new HashSet<>();
-        for (String str : perm) {
-            int res = 0;
-            int index = 0;
-            while(res != -1) {
-                res = s.indexOf(str, index);
-                if(res != -1) {
-                    answer.add(res);
-                    index += 1;
-                }
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
+
+        List<Integer> answer = new ArrayList<>();
+        if(s.length() == 0 || words.length == 0) {
+            return answer;
+        }
+
+        int count = words.length;
+        int length = words[0].length();
+        for (int i = 0; i <= s.length() - (count * length); i++) {
+            Map<String, Integer> seen = new HashMap<>();
+
+            // 1개씩 사용할 수 있도록 count
+            for (int j = 0; j < count; j++) {
+                int next = i + (j * length);
+                // 하나씩 단어 추출
+                String word = s.substring(next, next + length);
+
+                if(!map.containsKey(word)) break;
+
+                // 단어 개수 저장
+                seen.put(word, seen.getOrDefault(word, 0) + 1);
+
+                // 본게(seen) 기존 사용 가능 개수 넘어가면 return
+                if(seen.get(word) > map.getOrDefault(word, 0)) break;
+
+                // 마지막까지 1개씩 사용했을 때 유효한 케이스
+                if(j + 1 == count) answer.add(i);
             }
         }
-        return new ArrayList<>(answer);
-    }
 
-    void permutation(String[] arr, int depth, int n, int r) {
-        if (depth == r) {
-            String str = "";
-            for (String s : arr) {
-                str = str.concat(s);
-            }
-            perm.add(str);
-            return;
-        }
-
-        for (int i=depth; i<n; i++) {
-            swap(arr, depth, i);
-            permutation(arr, depth + 1, n, r);
-            swap(arr, depth, i);
-        }
-    }
-
-    static void swap(String[] arr, int depth, int i) {
-        String temp = arr[depth];
-        arr[depth] = arr[i];
-        arr[i] = temp;
+        return answer;
     }
 }

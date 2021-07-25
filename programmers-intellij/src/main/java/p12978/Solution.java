@@ -5,19 +5,24 @@ import java.util.*;
 class Solution {
     private Map<Integer, List<To>> connections = new HashMap<>();
     private boolean[] visited; // 1base
+    private boolean[] visitedHistory; // 1base
     private int answer = 0;
     private int K;
 
     public int solution(int N, int[][] road, int K) {
         visited = new boolean[N + 1];
+        visitedHistory = new boolean[N + 1];
         this.K = K;
 
         createConnections(road);
 
         visited[1] = true;
+        visitedHistory[1] = true;
         dfs(1, 0);
-        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-        System.out.println("Hello Java");
+
+        for (boolean b : visitedHistory) {
+            if(b) answer++;
+        }
 
         return answer;
     }
@@ -26,20 +31,22 @@ class Solution {
         List<To> tos = connections.get(from);
         for (To toData : tos) {
             int to = toData.getTo();
-            if(visited[to] || sum + toData.getEffort() > K) {
-                answer = Math.max(answer, checkVisited());
+            if (visited[to] || sum + toData.getEffort() > K) {
                 continue;
             }
             visited[to] = true;
+            visitedHistory[to] = true;
             dfs(to, sum + toData.getEffort());
             visited[to] = false;
         }
     }
 
+    // checkVisited 이 N^2을 만들어 느릴 수 있다. 비트마스크로 바꿔보자!
     public int checkVisited() {
         int res = 0;
-        for (boolean b : visited) {
-            if(b) res++;
+        for (int i = 0; i < visited.length; i++) {
+            if (visited[i]) visitedHistory[i] = true;
+            if (visitedHistory[i]) res++;
         }
         return res;
     }

@@ -11,7 +11,7 @@ class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
         permutation(words, 0, words.length, words.length);
 
-        Set<Integer> answer = new HashSet();
+        Set<Integer> answer = new HashSet<>();
         for (String str : perm) {
             int res = 0;
             int index = 0;

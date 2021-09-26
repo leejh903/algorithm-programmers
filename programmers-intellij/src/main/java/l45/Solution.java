@@ -1,27 +1,37 @@
 package l45;
 
 class Solution {
-	private int answer = Integer.MAX_VALUE;
+	// dp is lowest distance from current index to last index
+	private int[] dp;
 
 	public int jump(int[] nums) {
-		dfs(nums, 0, 0);
-		return answer;
+		if (nums.length == 1)
+			return 0;
+		dp = new int[nums.length];
+		return dfs(nums, 0);
 	}
 
-	public void dfs(int[] nums, int index, int jump) {
+	public int dfs(int[] nums, int index) {
 		if (index == nums.length - 1) {
-			answer = Math.min(answer, jump);
-			return;
+			return 0;
 		}
-		if (jump >= answer)
-			return;
+		if (dp[index] != 0) {
+			return dp[index];
+		}
 
+		int lowest = Integer.MAX_VALUE;
 		for (int i = 1; i <= nums[index]; i++) {
 			int next = index + i;
 			if (next >= nums.length || (next != nums.length - 1 && nums[next] == 0))
 				continue;
 
-			dfs(nums, next, jump + 1);
+			int val = dfs(nums, next);
+			if (val != Integer.MAX_VALUE) {
+				lowest = Math.min(lowest, val + 1);
+			}
 		}
+		dp[index] = lowest;
+
+		return dp[index];
 	}
 }

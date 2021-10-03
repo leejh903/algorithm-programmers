@@ -1,46 +1,58 @@
 package l50;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
+	List<Data> cache = new ArrayList<>();
+
 	public double myPow(double x, int n) {
+		int originN = n;
 		double answer = 1;
-		if (x == 1 || n == 0) {
+		if (n == 0) {
 			return answer;
 		}
-		if (x == -1) {
-			if (n % 2 == 0)
-				return 1;
-			else
-				return -1;
-		}
-		if (n > 1 && n == Integer.MIN_VALUE)
-			return 0;
 
-		String operation = "multiply";
-		if (n < 0) {
-			operation = "divide";
-			n = Math.abs(n);
+		cache.add(new Data(0, 1));
+		if (n > 0) {
+			cache.add(new Data(1, x));
+		} else {
+			cache.add(new Data(1, 1 / x));
 		}
 
-		int i = 1;
-		while (i <= n) {
-			if (operation == "divide") {
-				if (i != 1 && 2 * (i - 1) <= n) {
-					answer /= answer;
-					i = 2 * (i - 1);
-				} else {
-					answer /= x;
-					i++;
-				}
-			} else {
-				if (i != 1 && 2 * (i - 1) <= n) {
-					answer *= answer;
-					i = 2 * (i - 1);
-				} else {
-					answer *= x;
-					i++;
+		int i = 0;
+		if (n == Integer.MIN_VALUE) {
+			n++;
+			i++;
+			answer /= x;
+		}
+		n = Math.abs(n);
+		while (i < n) {
+			for (int j = cache.size() - 1; j > 0; j--) {
+				int e = cache.get(j).exponential;
+				if (i + e <= n && i + e > 0) {
+					answer *= cache.get(j).num;
+					i += e;
+					break;
 				}
 			}
+			cache.add(new Data(i, answer));
+		}
+
+		// multiply first cache to calculate 2147483648th
+		if (originN == Integer.MIN_VALUE) {
+			answer *= cache.get(1).num;
 		}
 		return answer;
+	}
+
+	class Data {
+		private int exponential;
+		private double num;
+
+		public Data(int exponential, double num) {
+			this.exponential = exponential;
+			this.num = num;
+		}
 	}
 }

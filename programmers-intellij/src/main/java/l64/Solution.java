@@ -9,6 +9,10 @@ class Solution {
 	}
 
 	private void dfs(int[][] grid, int row, int col, int sum) {
+		// finish meaningless recursive
+		if (sum >= minSum) {
+			return;
+		}
 		// out of index
 		if (row >= grid.length || col >= grid[0].length) {
 			return;

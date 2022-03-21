@@ -17,14 +17,6 @@ public class SolutionTest {
 	}
 
 	@Test
-	public void testOverlapptedTime() {
-		Program program = new Program("01:00:00", "21:00:00");
-		int start = Solution.convertToSecond("01:00:00");
-		int end = Solution.convertToSecond("26:00:00");
-		assertEquals(20 * 60 * 60, program.overlappedTime(start, end));
-	}
-
-	@Test
 	public void testCase1() {
 		String[] logs = new String[] {"01:20:15-01:45:14", "00:40:31-01:00:00", "00:25:50-00:48:29",
 				"01:30:59-01:53:29", "01:37:44-02:02:30"};

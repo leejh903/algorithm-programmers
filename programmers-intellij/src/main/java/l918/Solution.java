@@ -1,25 +1,18 @@
 package l918;
 
+// Get maxSum and minSum using Kadane's Algorithm
+// (total - minSum) is possible circular max sum array compared with maxSum
+// Idea is that minSum can be useful using Kadane's Algorithm
 class Solution {
 	public int maxSubarraySumCircular(int[] nums) {
-		int[] newNums = new int[nums.length * 2 - 1];
-		for (int i = 0; i < nums.length * 2 - 1; i++) {
-			newNums[i] = nums[i % nums.length];
+		int total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
+		for (int n : nums) {
+			curMax = Math.max(curMax + n, n);
+			maxSum = Math.max(maxSum, curMax);
+			curMin = Math.min(curMin + n, n);
+			minSum = Math.min(minSum, curMin);
+			total += n;
 		}
-
-		int max = newNums[0];
-		for (int i = 0; i < nums.length; i++) {
-			// copy newNums
-			int[] temp = new int[newNums.length];
-			for (int n = 0; n < newNums.length; n++) {
-				temp[n] = newNums[n];
-			}
-
-			for (int j = i + 1; j < i + nums.length; j++) {
-				temp[j] = Math.max(temp[j], temp[j] + temp[j - 1]);
-				max = Math.max(max, temp[j]);
-			}
-		}
-		return max;
+		return maxSum > 0 ? Math.max(maxSum, total - minSum) : maxSum;
 	}
 }

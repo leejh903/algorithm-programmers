@@ -1,28 +1,38 @@
 package l309;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
-    private int max = 0;
+    private Map<String, Integer> dp;
 
     public int maxProfit(int[] prices) {
-        dfs(prices, 0, prices[0], 0);
-        return max;
+        dp = new HashMap<>();
+        dfs(prices, 0, true);
+        return dp.get(String.format("%d-%b", 0, true));
     }
 
-    void dfs(int[] prices, int current, int buyPrice, int sum) {
+    int dfs(int[] prices, int current, boolean canBuy) {
         if (current >= prices.length) {
-            max = Math.max(max, sum);
-            return;
-        }
-        if (prices[current] < buyPrice) {
-            dfs(prices, current + 1, prices[current], sum);
-            return;
+            return 0;
         }
 
-        // do not sell
-        dfs(prices, current + 1, buyPrice, sum);
+        String key = String.format("%d-%b", current, canBuy);
+        if (dp.containsKey(key)) {
+            return dp.get(key);
+        }
 
+        if (canBuy) {
+            int bought = dfs(prices, current + 1, false) - prices[current];
+            int cooldown = dfs(prices, current + 1, true);
+            dp.put(key, Math.max(bought, cooldown));
+        }
         // sell
-        int profit = prices[current] - buyPrice;
-        dfs(prices, current + 2, prices[current], sum + profit);
+        if (!canBuy) {
+            int sold = dfs(prices, current + 2, true) + prices[current];
+            int cooldown = dfs(prices, current + 1, false);
+            dp.put(key, Math.max(sold, cooldown));
+        }
+        return dp.get(key);
     }
 }

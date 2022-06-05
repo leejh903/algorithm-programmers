@@ -22,7 +22,6 @@ class Solution {
                 queue.add(new Position(row, col));
                 while (!queue.isEmpty()) {
                     Position pos = queue.poll();
-                    grid[pos.row][pos.col] = visited;
 
                     for (int i = 0; i < direction.length; i++) {
                         int newRow = pos.row + direction[i].row;
@@ -36,6 +35,7 @@ class Solution {
                             continue;
                         }
 
+                        grid[newRow][newCol] = visited;
                         queue.add(new Position(newRow, newCol));
                     }
                 }

@@ -1,43 +1,30 @@
 package l264;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class Solution {
-    Map<Integer, Integer> dp;
-
+    // 1*2=2 | 1*3=3 | 1*5=5
+    // 2*2=4 | 2*3=6 | 2*5=10
+    // 3*2=6 | 3*3=9 | 3*5=15
+    // 4*2=8 | 4*3=12| 4*5=20
     public int nthUglyNumber(int n) {
-        dp = new HashMap<>();
-        int num = 1;
-        while (true) {
-            int result = divideUglyNumer(num);
-            dp.put(num, result);
+        int[] dp = new int[n];
+        dp[0] = 1;
+        int index = 1, i2 = 0, i3 = 0, i5 = 0;
+        while (index < n) {
+            int num1 = dp[i2] * 2;
+            int num2 = dp[i3] * 3;
+            int num3 = dp[i5] * 5;
 
-            if (result == 1) {
-                n--;
-            }
-            if (n == 0) {
-                break;
-            }
-            num++;
+            int res = Math.min(Math.min(num1, num2), num3);
+            if (res == num1)
+                i2++;
+            if (res == num2)
+                i3++;
+            if (res == num3)
+                i5++;
+            dp[index] = res;
+            index++;
         }
-        return num;
+        return dp[n - 1];
     }
 
-    int divideUglyNumer(int num) {
-        if (dp.containsKey(num)) {
-            return dp.get(num);
-        }
-
-        if (num % 2 == 0) {
-            num = divideUglyNumer(num / 2);
-        }
-        if (num % 3 == 0) {
-            num = divideUglyNumer(num / 3);
-        }
-        if (num % 5 == 0) {
-            num = divideUglyNumer(num / 5);
-        }
-        return num;
-    }
 }

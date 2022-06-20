@@ -34,6 +34,8 @@ class Solution {
         while (!queue.isEmpty()) {
             Position current = queue.poll();
             if (isBoundaryConnected(grid, current)) {
+                // cannot return result directly
+                // connected position should be written as visited
                 result = false;
             }
 

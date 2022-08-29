@@ -2,43 +2,42 @@ package l304;
 
 class NumMatrix {
     int[][] sum;
-    int colLength;
 
     public NumMatrix(int[][] matrix) {
-        int n = matrix.length * matrix[0].length;
-        sum = new int[n][n];
-        colLength = matrix[0].length;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        sum = new int[row][col];
 
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                int p1 = matrix[0].length * i + j;
+        sum[0][0] = matrix[0][0];
+        for(int i = 1; i < row; i++) {
+            sum[i][0] = sum[i - 1][0] + matrix[i][0];
+        }
 
-                for (int r = i; r < matrix.length; r++) {
-                    for (int c = j; c < matrix[0].length; c++) {
-                        int s = calculateSum(matrix, i, j, r, c);
-                        int p2 = matrix[0].length * r + c;
-                        sum[p1][p2] = s;
-                    }
-                }
+        for(int i = 1; i < col; i++) {
+            sum[0][i] = sum[0][i - 1] + matrix[0][i];
+        }
 
+        for(int i = 1; i < row; i++) {
+            for(int j = 1; j < col; j++) {
+                sum[i][j] = matrix[i][j] + sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
             }
         }
-    }
-
-    private int calculateSum(int[][] matrix, int row1, int col1, int row2, int col2) {
-        int sum = 0;
-        for (int i = row1; i <= row2; i++) {
-            for (int j = col1; j <= col2; j++) {
-                sum += matrix[i][j];
-            }
-        }
-        return sum;
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        int p1 = colLength * row1 + col1;
-        int p2 = colLength * row2 + col2;
-        return sum[p1][p2];
+        int res = sum[row2][col2];
+
+        if(col1 > 0) {
+            res -= sum[row2][col1 - 1];
+        }
+        if(row1 > 0) {
+            res -= sum[row1 - 1][col2];
+        }
+
+        if(row1 > 0 && col1 > 0) {
+            res += sum[row1 - 1][col1 - 1];
+        }
+        return res;
     }
 }
 
